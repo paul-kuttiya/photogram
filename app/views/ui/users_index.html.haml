@@ -1,0 +1,30 @@
+.user-profile
+  .media.profile-head
+    .col-md-4.col-sm-4.col-xs-4.user-cover
+      %img.img-circle.media-object{src: "http://via.placeholder.com/175x175"}
+    .col-md-8.col-sm-8.col-xs-8.clearfix
+      %h2.media-heading stickyricemag
+      %a.label.label-default{href: "#"}
+        Edit profile
+    .user-status
+      .lead.user-record
+        %span 
+          %strong 33 
+          posts
+        %span 
+          %strong 33 
+          comments
+        %span 
+          %strong 33 
+          Likes
+      .lead.user-detail
+        %p
+          Sawaddee kha 🙏🏻we are Thai in NY providing you information about Thai food /travel/ lifestyle/Art /entertainment /language and much more !
+      
+        %a(href="www.stickyricemag.com")
+          www.stickyricemag.com
+
+  .user-photos.clearfix
+    - 12.times do
+      .col-md-4.col-sm-4.col-xs-4.no-padding
+        %img{src: "http://via.placeholder.com/300x300"}

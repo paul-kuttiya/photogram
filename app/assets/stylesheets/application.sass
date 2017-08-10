@@ -1,0 +1,140 @@
+$grey: #efefef
+$white: #fafafa
+
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets"
+
+// Import theme variables
+@import "bootswatch/readable/variables"
+
+// Bootstrap
+@import "bootstrap"
+
+// Bootswatch style
+@import "bootswatch/readable/bootswatch"
+
+//font-awesome
+@import "font-awesome"
+
+//import all files
+@import "./*"
+
+#content
+  padding: 3em 0
+
+.no-padding
+  padding: 0
+
+// user show
+.user-show
+  padding: 0 2em
+  
+  *
+    box-sizing: border-box
+
+  section.user-show-wrapper
+    position: relative
+    height: 100%
+    border: 1px solid $grey
+    
+    header, 
+    .user-show-comments
+      padding: 1.25em
+
+
+    header, .user-like, .user-show-comments
+      width: 33.33%
+
+    header
+      padding: 0 1.25em
+      height: 80px //max 8%
+      margin-right: 0
+      position: absolute
+      right: 0
+      top: 0
+      .user-show-info
+        padding: 1em 0
+        border-bottom: 1px solid $grey
+        img
+          display: inline-block
+          width: 48px
+          height: 48px
+        a
+          display: inline-block
+          
+    .user-photo
+      width: 66.66%
+      background-color: $white
+      float: left
+      img
+        width: 100%
+
+  .user-show-comments
+    position: absolute
+    left: 66.66%
+    top: 80px
+    height: 65%
+    overflow-y: scroll
+    ul
+      padding: 0
+      list-style: none
+      li
+        margin: 0.5em 0
+        padding-right: 0.5em
+
+  .user-like
+    padding: 0 1.25em
+    position: absolute
+    left: 66.66%
+    top: 76%
+    height: 24%
+    section.like-icon
+      padding: 1.25em 0
+      width: 100%
+      border-top: 1px solid $grey
+      a
+        font-size: 1.5em
+        margin-right: 1em
+
+//general
+@media screen and (max-width: 770px)
+  #content
+    padding-top: 1em
+
+//user show
+@media screen and (max-width: 770px)
+  .user-show
+    section.user-show-wrapper
+      .user-photo
+        width: 55%
+
+      header, .user-like, .user-show-comments
+        width: 45%
+        left: 55%
+
+      .user-show-comments
+        height: 40%
+
+      .user-like
+        top: 60%
+        section.like-icon
+          padding: 0.75em 0
+
+@media screen and (max-width: 415px)
+  .user-show
+    section.user-show-wrapper
+      header
+        position: inherit !important
+        width: 100%
+
+      .user-photo
+        float: none
+        position: inherit !important
+        width: 100%
+        img
+          width: 100%
+
+      .user-show-comments
+        width: 100%
+        position: initial
+        overflow-y: scroll

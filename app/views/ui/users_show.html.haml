@@ -1,0 +1,25 @@
+.user-show
+  %section.user-show-wrapper.clearfix
+    %header
+      .user-show-info
+        %img.img-circle{src: "http://via.placeholder.com/175x175"}
+        %a(href="#") username
+    .user-photo
+      %img{src: "http://via.placeholder.com/300x300"}
+    .user-show-comments
+      %ul
+        - 20.times do |n|
+          %li
+            %a{href: "#"} username #{n+1}
+            %span
+              comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1  comment 1 comment 1 comment 1
+    .user-like
+      %section.like-icon
+        = link_to "#" do
+          .glyphicon.glyphicon-heart
+        = link_to "#" do
+          .glyphicon.glyphicon-comment
+      %p 1,234,567 likes
+      %form
+        .form-group
+          %input{type: "text", class: "form-control", placeholder: "Add a comment..."} 

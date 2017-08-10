@@ -1,0 +1,101 @@
+// user index
+.user-profile
+  padding: 2em
+
+  .profile-head
+    position: relative
+    margin: 0 0 3em 0
+
+    .media-heading
+      display: inline-block
+      margin-bottom: 0
+      margin-right: 0.5em
+
+    a.label
+      font-size: 1em
+      display: inline-block
+      vertical-align: 0.25em
+      &:hover
+        background: none
+        color: #333
+
+  .media
+    .user-cover
+      .media-object
+        margin: 0 auto
+
+    .user-status
+      width: 66.66%
+      display: inline-block
+      padding: 1em
+      .lead
+        margin: 0
+        span
+          margin: 0 1em 0 0
+
+  .user-photos
+    img
+      width: 100%
+      padding: 1em
+
+//user index
+@media screen and (max-width: 770px)
+  .user-profile
+    padding: 0
+    .user-cover
+      img
+        width: 100%
+
+    .user-photos
+      img
+        padding: 1px
+        width: 100%
+
+@media screen and (max-width: 415px)
+  .user-profile
+    .media.profile-head
+      margin-bottom: 0
+
+      .user-cover
+        width: 30%
+        img
+          margin: 0
+          float: left
+          width: 77px
+          height: 77px
+
+      .media-heading
+        font-size: 1.25em
+        margin-bottom: 0.75em
+
+      a.label
+        display: inline-block
+        width: 100%
+
+      .user-status
+        width: 100%
+        clear: both
+        
+        .user-record
+          position: absolute
+          width: 100%
+          text-align: center
+          bottom: 0
+          left: 50%
+          -webkit-transform: translateX(-50%)
+          transform: translateX(-50%)
+          span
+            margin: 0 auto
+            width: 32%
+            display: inline-block
+            strong
+              width: 100%
+              display: block
+
+        .user-detail
+          margin-bottom: 2.75em
+          padding-bottom: 1em
+          border-bottom: 1px solid $grey
+
+    .user-photos
+      margin-top: 1em

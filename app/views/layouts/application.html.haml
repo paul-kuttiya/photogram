@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title Photogram
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = render 'layouts/header'
+    #main_content
+      = render 'layouts/messages'
+      #content
+        = yield
+    %footer

@@ -1,7 +1,7 @@
-.posts.clearfix
+#posts.clearfix
   - 5.times do |n|
     .col-md-offset-2.col-md-8.post-no-padding
-      .post-wrapper{data: {id: n + 1}}
+      %section.post-wrapper{data: {id: n + 1}}
         %header.profile
           = link_to "#", class: "user-info" do
             .media.pull-left

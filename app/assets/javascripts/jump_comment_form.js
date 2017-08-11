@@ -3,7 +3,7 @@ $(function() {
 
   var CommentForm = {
     $commentIcon: $main.find(`[data-type="comment_icon"]`),
-    $commentInput: $('form input#comment-input'),
+    $postsCommentInput: $('#posts').find('form input#comment-input'),
     jumpToCommentForm: function() {
       var self = this;
       
@@ -12,13 +12,17 @@ $(function() {
         self.hideInput();
 
         var id = $(this).data('id'),
-            input = $(this).parents(`.post-wrapper[data-id=${id}]`).find('input#comment-input');
+            input = $(this).parents(`section[data-id=${id}]`).find('input#comment-input');
 
         input.show().focus();
       });
     },
     hideInput: function() {
-      this.$commentInput.hide();
+      if (!this.$postsCommentInput) {
+        return;
+      }
+
+      this.$postsCommentInput.hide();
     },
     init: function() {
       this.hideInput();

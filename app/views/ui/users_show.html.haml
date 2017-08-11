@@ -1,5 +1,5 @@
 .user-show
-  %section.user-show-wrapper.clearfix
+  %section.user-show-wrapper.clearfix{data: {id: 1}}
     %header.profile
       = link_to "#", class: "user-info" do
         .media.pull-left
@@ -20,7 +20,7 @@
       %section.like-icon
         = link_to "#" do
           .glyphicon.glyphicon-heart
-        = link_to "#", data: {type: "comment-icon"} do
+        = link_to "#", data: {type: "comment_icon", id: 1} do
           .glyphicon.glyphicon-comment
       %p 
         %strong

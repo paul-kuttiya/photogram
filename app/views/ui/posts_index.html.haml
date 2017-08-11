@@ -1,0 +1,36 @@
+.posts.clearfix
+  - 5.times do |n|
+    .col-md-offset-2.col-md-8.post-no-padding
+      .post-wrapper{data: {id: n + 1}}
+        %header.profile
+          = link_to "#", class: "user-info" do
+            .media.pull-left
+              %img.img-circle{src: "http://via.placeholder.com/175x175"}
+            %span 
+              %strong
+                username #{n + 1}
+            %br
+            %span The best user ever!
+        .post-body
+          %img{src: "http://via.placeholder.com/300x300"}
+        .like
+          %section.like-icon
+            = link_to "#" do
+              .glyphicon.glyphicon-heart
+            = link_to "#", data: {type: "comment_icon", id:  n + 1} do
+              .glyphicon.glyphicon-comment
+          %p 
+            %strong
+              1,234,567 likes
+        .comments{data: {type: "comments"}}
+          %ul
+            - 5.times do |n|
+              %li
+                %a{href: "#"} username
+                %span
+                  comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1  comment 1 comment 1 comment 1
+              %span.text-muted
+                11 hours ago
+        %form#comment-form
+          .form-group
+            %input{type: "text", id: "comment-input", class: "form-control", placeholder: "Add a comment..."}

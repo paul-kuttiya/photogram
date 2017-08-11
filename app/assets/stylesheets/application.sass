@@ -1,6 +1,17 @@
-$grey: #efefef
-$white: #fafafa
+$grey: #e7e7e7
+$white: white
+$bg: #fafafa
+$primary: #4582EC
+$default: #333333
+$red: #d9534f
 
+@function border($px, $color)
+  @return ($px + px) solid $color
+
+@function glyphicon($px, $color)
+  $pixel: ($px + px)
+  @return -$pixel 0 $default, 0 $pixel $default, $pixel 0 $default, 0 -1.5px $default
+  
 //Import bootstrap-sprockets
 @import "bootstrap-sprockets"
 
@@ -19,48 +30,98 @@ $white: #fafafa
 //import all files
 @import "./*"
 
+body
+  background-color: $bg
+
+nav
+  border-radius: 0 !important
+  border-left: none !important
+  border-right: none !important
+
+.glyphicon
+  text-shadow: glyphicon(1.5, $default)
+  color: $white
+
 #content
   padding: 3em 0
+  a:hover
+    cursor: pointer
+    text-decoration: none
 
 .no-padding
   padding: 0
 
+header.profile
+  padding: 0 1.25em
+  height: 80px //max 8%
+  a.user-info
+    display: block
+    color: $default
+    padding: 1em 0
+    border-bottom: border(1, $grey)
+    img
+      display: inline-block
+      width: 48px
+      height: 48px
+      margin-right: 1em
+
+.comments
+  padding: 1.25em
+  ul
+    padding: 0
+    list-style: none
+    li
+      margin: 0.5em 0
+      padding-right: 0.5em
+
+.like
+  padding: 0 1.25em
+  section.like-icon
+    padding: 1.5em 0 0.5em 0
+    width: 100%
+    border-top: border(1, $grey)
+    a
+      font-size: 1.5em
+      margin-right: 0.5em
+      &:focus, &:hover
+        color: $primary
+
+form#comment-form
+  padding: 0 1.25em
+  input#comment-input
+    border: none
+    padding-left: 0
+    border-top: border(1, $grey)
+    border-radius: 0
+    &:focus
+    box-shadow: none   
+
 // user show
 .user-show
   padding: 0 2em
-  
+
   *
     box-sizing: border-box
 
   section.user-show-wrapper
+    background: $white
     position: relative
     height: 100%
-    border: 1px solid $grey
+    border: border(1, $grey)
+    border-top-right-radius: 5px
+    border-bottom-right-radius: 5px
     
-    header, 
-    .user-show-comments
-      padding: 1.25em
-
-
-    header, .user-like, .user-show-comments
+    header.profile, .like, 
+    .comments,
+    form#comment-form
       width: 33.33%
 
-    header
-      padding: 0 1.25em
-      height: 80px //max 8%
-      margin-right: 0
+    header.profile
+      padding-right: 1.25em
+      padding-left: 1.25em
       position: absolute
       right: 0
       top: 0
-      .user-show-info
-        padding: 1em 0
-        border-bottom: 1px solid $grey
-        img
-          display: inline-block
-          width: 48px
-          height: 48px
-        a
-          display: inline-block
           
     .user-photo
       width: 66.66%
@@ -69,63 +130,71 @@ $white: #fafafa
       img
         width: 100%
 
-  .user-show-comments
+  .comments
     position: absolute
     left: 66.66%
     top: 80px
     height: 65%
     overflow-y: scroll
-    ul
-      padding: 0
-      list-style: none
-      li
-        margin: 0.5em 0
-        padding-right: 0.5em
 
-  .user-like
-    padding: 0 1.25em
+  .like
     position: absolute
     left: 66.66%
     top: 76%
     height: 24%
-    section.like-icon
-      padding: 1.25em 0
-      width: 100%
-      border-top: 1px solid $grey
-      a
-        font-size: 1.5em
-        margin-right: 1em
+
+  form#comment-form
+    position: absolute
+    left: 66.66%
+    bottom: 0
 
 //general
 @media screen and (max-width: 770px)
   #content
-    padding-top: 1em
+    padding: 0
+
+@media screen and (max-width: 415px)
+  nav
+    margin-bottom: 0 !important
 
 //user show
-@media screen and (max-width: 770px)
+//ipad
+@media (min-width: 416px) and (max-width: 770px)
   .user-show
+    padding-top: 4em
+    padding-bottom: 4em
+
     section.user-show-wrapper
       .user-photo
         width: 55%
 
-      header, .user-like, .user-show-comments
+      header.profile, .like, .comments
         width: 45%
         left: 55%
 
-      .user-show-comments
+      .comments
         height: 40%
 
-      .user-like
+      .like
         top: 60%
         section.like-icon
           padding: 0.75em 0
 
+// mobile
 @media screen and (max-width: 415px)
   .user-show
+    padding: 0
+    
     section.user-show-wrapper
-      header
+      border: none
+      border-radius: 0
+
+      header.profile
+        border: none
         position: inherit !important
         width: 100%
+        a.user-info
+          border-bottom: none
 
       .user-photo
         float: none
@@ -134,7 +203,22 @@ $white: #fafafa
         img
           width: 100%
 
-      .user-show-comments
+      .comments
+        top: 100%
+
+      .like, 
+      form#comment-form,
+      .comments
+        padding: 0
         width: 100%
-        position: initial
-        overflow-y: scroll
+        position: relative !important
+        left: 0
+        
+      .like
+        padding: 1em
+        section.like-icon
+          padding: 0
+          border-top: none
+      
+      form#comment-form
+        padding: 0 1em

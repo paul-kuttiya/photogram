@@ -1,0 +1,28 @@
+.posts
+  *
+    box-sizing: border-box
+
+  .post-wrapper
+    border-radius: 5px
+    margin-bottom: 3em
+    border: border(1, $grey)
+    background-color: $white
+    .post-body
+      img
+        width: 100%
+
+    .comments
+      padding-top: 0
+
+@media screen and (max-width: 415px)
+  .posts
+    background: $white
+    .post-no-padding
+      padding: 0
+
+    .post-wrapper
+      margin-bottom: 0
+      border: none
+      header.profile
+        a.user-info
+          border: none

@@ -30,9 +30,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener'
   gem 'thin'
-
-  #dev reload
-  gem 'spring'
+  gem 'spring' #dev reload
   gem 'guard'
   gem "rack-livereload"
   gem 'guard-livereload'
@@ -41,11 +39,10 @@ end
 group :development, :test do
   gem 'pry'
   gem 'pry-nav'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rails-controller-testing'
   gem 'capybara'
   gem 'capybara-email'
   gem 'chromedriver-helper'

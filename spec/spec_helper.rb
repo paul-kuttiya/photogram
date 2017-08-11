@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'capybara/rails'
+# require 'capybara/rails'
 # require 'capybara/email/rspec'
 # require 'sidekiq/testing/inline'
 # require 'vcr'
@@ -17,7 +17,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Capybara.server_port = 52662
 
-# ActiveRecord::Migration.maintain_test_schema!
+ActiveRecord::Migration.maintain_test_schema!
 
 # VCR.configure do |c|
 #   c.cassette_library_dir = 'spec/cassettes'

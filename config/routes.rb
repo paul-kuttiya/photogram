@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get '/ui(/:action)', controller: 'ui'
   
   get '/signup', to: "users#new"
+  get '/login', to: "sessions#new" 
 
-  resources :users, path: "/", except: [:new]
+  resources :users, path: "/", only: [:show]
+  resources :users, only: [:create]
+  get '/account', to: "users#edit"
 
 end

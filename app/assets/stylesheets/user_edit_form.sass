@@ -1,0 +1,24 @@
+section.edit-user
+  padding: 2em 1em
+
+  header.profile
+    .user-info
+      border: none
+      br
+        display: none
+      span
+        font-size: 1.5em
+        padding-left: 15px
+        &:nth-of-type(2)
+          display: none
+
+  .user-edit-form
+    margin-top: 1.5em
+
+@media screen and (max-width: 415px)
+  section.edit-user
+    header.profile
+      padding: 0
+      a.user-info
+        span
+          padding-left: 0

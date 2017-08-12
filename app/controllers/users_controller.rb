@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :redirect_signed_in, only: [:new, :create, :edit, :update]
-
+  before_action :redirect_signed_in, only: [:new, :create]
+  before_action :require_user, only: [:edit]
   before_action :find_user, only: [:show]
 
   def new
@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @user = User.find_by_id(current_user.id)
   end
 
   private

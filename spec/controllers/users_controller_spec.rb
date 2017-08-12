@@ -85,14 +85,28 @@ describe UsersController do
 
   describe "GET edit" do
     context "signed in user" do
-      it "finds user" do
+      let(:user) { Fabricate(:user) }
+
+      before do
+        logged_in(user)
+        get :edit, id: user.username
       end
       
-      it "renders user edit page"
+      it "finds user" do
+        expect(assigns[:user]).to eq user
+      end
+      
+      it "render user edit page" do
+        expect(response).to render_template :edit
+      end
     end
 
     context "non user" do
-      it "redirects to sign in path"
+      let(:user) { Fabricate(:user) }
+
+      it_behaves_like "require user" do
+        let(:action) { get :edit, id: user.username }
+      end
     end
   end
 

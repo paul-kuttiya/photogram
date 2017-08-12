@@ -4,7 +4,7 @@
     %h4.text-muted Sign up to see photos from your friends.
     %hr
   = bootstrap_form_for @user do |f|
-    = f.text_field :email, hide_label: true, placeholder: "Email"
+    = f.email_field :email, hide_label: true, placeholder: "Email"
     = f.text_field :full_name, hide_label: true, placeholder: "Full Name"
     = f.text_field :username, hide_label: true, placeholder: "Username"
     = f.password_field :password, hide_label: true, placeholder: "Password"

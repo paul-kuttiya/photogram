@@ -1,0 +1,14 @@
+.user-form-wrapper.col-md-offset-4.col-md-4
+  .well
+    .text-center
+      %h1 Photogram
+      %hr
+
+    = bootstrap_form_tag url: '/login' do |f|
+      = f.text_field :username, hide_label: true, placeholder: "Username"
+      = f.password_field :password, hide_label: true, placeholder: "Password"
+      = f.submit "Log in", class: "btn btn-block btn-primary"    
+  
+  .well.bottom.text-center
+    %p Don't have an account?
+    = link_to "Sign up", signup_path

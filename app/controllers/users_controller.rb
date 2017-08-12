@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_signed_in, only: [:new, :create]
   before_action :require_user, only: [:edit]
-  before_action :find_user, only: [:show]
 
   def new
     @user = User.new
@@ -20,8 +19,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = find_user(username: params[:id])
+  end
+
   def edit
-    @user = User.find_by_id(current_user.id)
+    @user = find_user(id: current_user.id)
+  end
+
+  def update
+    @user = find_user(id: current_user.id)
+
+    if @user.update(user_params)
+      flash[:success] = "Profile updated."
+      redirect_to accounts_edit_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -29,7 +43,11 @@ class UsersController < ApplicationController
     params.require(:user).permit!
   end
 
-  def find_user
-    @user = User.find_by(username: params[:id])
+  def user_password
+    params.require(:password).permit!
+  end
+
+  def find_user(options={})
+    @user = User.find_by(options)
   end
 end

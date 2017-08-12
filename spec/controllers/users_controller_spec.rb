@@ -112,13 +112,21 @@ describe UsersController do
 
   describe "POST update" do
     context "signed in user" do
-      it "finds user"
-      it "updates user info"
-      it "redirects back to user show page"
+      context "update profile" do
+        it "finds user"
+        it "redirects back to user account page"
+      end
+
+      context "update password" do
+        it "finds user"
+        it "redirects back to user account page"
+      end     
     end
 
     context "non user" do
-      it "redirects to sign in path"
+      # it_behaves_like "require user" do
+      #   let(:action) { post :update, id: user.username }
+      # end
     end
   end
 end

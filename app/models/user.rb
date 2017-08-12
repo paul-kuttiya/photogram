@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  validates_presence_of :username, :email, :password
-  validates_presence_of :password, on: :create
+  validates_presence_of :username, :email
+  # validates :password, presence: true, on: :create
   validates_uniqueness_of :username, :email, case_sensitive: false
   validates :username, length: { in: 5..20 }
-  validates :password, length: { in: 5..20 }  
+  validates :password, presence: true, length: { in: 5..20 }, on: :create
 
   has_secure_password validation: false
 

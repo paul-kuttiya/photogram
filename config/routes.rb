@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   
   get '/signup', to: "users#new"
   get '/login', to: "sessions#new" 
+  
+  post '/login', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
 
   resources :users, path: "/", only: [:show]
-  resources :users, only: [:create]
-  get '/account', to: "users#edit"
-
+  resources :users, only: [:create, :update]
+  get '/accounts/edit', to: "users#edit"
 end

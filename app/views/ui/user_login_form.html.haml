@@ -1,0 +1,15 @@
+.user-form-wrapper.col-md-offset-4.col-md-4
+  .well
+    .text-center
+      %h1 Photogram
+      %hr
+    %form
+      .form-group
+        %input{type: "text", class: "form-control", placeholder: "Username"}
+      .form-group
+        %input{type: "text", class: "form-control", placeholder: "Password"}
+      %input{type:"submit", value: "Log in", class: "btn btn-block btn-primary"}
+  
+  .well.bottom.text-center
+    %p Don't have an account?
+    = link_to "Sign up", "#"

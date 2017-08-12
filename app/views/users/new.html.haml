@@ -1,12 +1,16 @@
-.well.user-form-wrapper.col-md-offset-4.col-md-4
-  .text-center
-    %h1 Photogram
-    %h4.text-muted Sign up to see photos from your friends.
-    %hr
-  = bootstrap_form_for @user do |f|
-    = f.email_field :email, hide_label: true, placeholder: "Email"
-    = f.text_field :full_name, hide_label: true, placeholder: "Full Name"
-    = f.text_field :username, hide_label: true, placeholder: "Username"
-    = f.password_field :password, hide_label: true, placeholder: "Password"
-    = f.submit "Sign Up", class: "btn btn-block btn-primary"
-    
+.user-form-wrapper.col-md-offset-4.col-md-4
+  .well
+    .text-center
+      %h1 Photogram
+      %h4.text-muted Sign up to see photos from your friends.
+      %hr
+    = bootstrap_form_for @user do |f|
+      = f.email_field :email, hide_label: true, placeholder: "Email"
+      = f.text_field :full_name, hide_label: true, placeholder: "Full Name"
+      = f.text_field :username, hide_label: true, placeholder: "Username"
+      = f.password_field :password, hide_label: true, placeholder: "Password"
+      = f.submit "Sign Up", class: "btn btn-block btn-primary"
+
+  .well.bottom.text-center
+    %p Have an account?
+    = link_to "Log in", login_path    

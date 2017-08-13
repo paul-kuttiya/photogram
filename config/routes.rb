@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
-  resources :users, path: "/", only: [:show]
-  resources :users, only: [:create, :update]
-  get '/accounts/edit', to: "users#edit"
+  resources :users, path: "/", only: [:show] do
+    resources :posts, path: "/p"
+  end
+
+  resources :users, only: [:create]
 end

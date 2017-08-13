@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :username, length: { in: 5..20 }
   validates :password, presence: true, length: { in: 5..20 }, on: :create
 
+  has_many :posts
   has_secure_password validation: false
 
   def to_param

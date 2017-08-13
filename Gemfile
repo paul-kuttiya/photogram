@@ -24,6 +24,8 @@ gem 'pg', '0.20'
 gem 'sidekiq', '4.2.10'
 gem 'uglifier'
 gem 'voteable_pkuttiya'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 group :development do
   gem "awesome_print"
@@ -60,5 +62,6 @@ group :development, :production do
 end
 
 group :production do
+  gem 'carrierwave-aws'
   gem 'rails_12factor'
 end

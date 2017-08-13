@@ -1,0 +1,30 @@
+.post-show
+  %section.post-show-wrapper.clearfix{data: {id: 1}}
+    %header.profile
+      = link_to "#", class: "user-info" do
+        .media.pull-left
+          %img.img-circle{src: "http://via.placeholder.com/175x175"}
+        %span 
+          %strong
+            username
+    .user-photo
+      %img{src: "#{@post.image}"}
+    .comments{data: {type: "comments"}}
+      %ul
+        - 20.times do |n|
+          %li
+            %a{href: "#"} username #{n+1}
+            %span
+              comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1  comment 1 comment 1 comment 1
+    .like
+      %section.like-icon
+        = link_to "#" do
+          .glyphicon.glyphicon-heart
+        = link_to "#", data: {type: "comment_icon", id: 1} do
+          .glyphicon.glyphicon-comment
+      %p 
+        %strong
+          1,234,567 likes
+    %form#comment-form
+      .form-group
+        %input{type: "text", id: "comment-input", class: "form-control", placeholder: "Add a comment..."} 

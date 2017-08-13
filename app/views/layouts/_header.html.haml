@@ -14,10 +14,11 @@
       -#     %input.form-control{:placeholder => "Search", :type => "text"}/
       -#   %button.btn.btn-default{:type => "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
-        %li
-          = link_to "#" do
-            = fa_icon "photo"
-            New Photo
+        - if logged_in?
+          %li
+            = link_to new_user_post_path(current_user) do
+              = fa_icon "photo"
+              New Photo
         - unless logged_in?
           %li= link_to "Login", login_path
           %li= link_to "Signup", signup_path

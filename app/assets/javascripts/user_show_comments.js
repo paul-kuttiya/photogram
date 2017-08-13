@@ -1,5 +1,5 @@
 $(function() {
-  $main = $('#content .user-show');
+  $main = $('#content .post-show');
 
   var userShow = {
     mobile: !!($(window).width() <= 415),

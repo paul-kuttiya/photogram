@@ -3,7 +3,7 @@ Fabricator(:post) do
   caption { Faker::Lorem.paragraph(1) }
   
   image do
-    File.open(Rails.root + Dir["app/assets/images/seed/*"].sample)
+    File.open(Rails.root + Dir["public/images/*"].sample)
   end
   
   user { User.all.sample }

@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Fabricate(:user, username: "admin", password: "admin")
+
+10.times do 
+  Fabricate(:user)
+end
+
+100.times do
+  Fabricate(:post)
+end

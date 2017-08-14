@@ -62,14 +62,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  config.after(:all) do
-    if Rails.env.test? || Rails.env.cucumber?
-      tmp = Fabricate(:post)
-      store_path = File.dirname(File.dirname(tmp.image))
-      temp_path = tmp.image.cache_dir
-      FileUtils.rm_rf(Dir["#{Rails.root}/public/#{store_path}/[^.]*"])
-      FileUtils.rm_rf(Dir["#{temp_path}/[^.]*"])
-    end
-  end
 end

@@ -18,9 +18,12 @@
           Likes
       .lead.user-detail
         %p= @user.bio
-        = link_to @user.website, display_website(@user.website), target: '_blank'
+        - if @user.website
+          = link_to @user.website, display_website(@user.website), target: '_blank'
 
   .user-photos.clearfix
-    - 12.times do
-      .col-md-4.col-sm-4.col-xs-4.no-padding
-        %img{src: "http://via.placeholder.com/300x300"}
+    - @user.posts.each do |post|
+      %ul
+        %li.col-md-4.col-sm-4.col-xs-4.no-padding.post-img-wrapper
+          = link_to [@user, post] do
+            .post-img{style: "background-image: url(#{post.image})"}

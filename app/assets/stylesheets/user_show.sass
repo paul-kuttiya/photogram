@@ -1,6 +1,11 @@
-// user index
+// user show
 .user-profile
   padding: 2em
+
+  ul
+    padding: 0
+    margin: 0
+    list-style: none
 
   .profile-head
     position: relative
@@ -38,11 +43,15 @@
           margin: 0 1em 0 0
 
   .user-photos
-    img
-      width: 100%
-      padding: 1em
+    .post-img-wrapper
+      padding: 0.25em
+      .post-img
+        width: 100%
+        height: 300px
+        background-position: 50% 50%
+        background-repeat: no-repeat
+        background-size: cover
 
-//user index
 @media screen and (max-width: 770px)
   .user-profile
     padding: 0
@@ -51,9 +60,8 @@
         width: 100%
 
     .user-photos
-      img
+      .post-img-wrapper
         padding: 1px
-        width: 100%
 
 @media screen and (max-width: 415px)
   .user-profile
@@ -104,3 +112,13 @@
 
     .user-photos
       margin-top: 1em
+      .post-img-wrapper
+        .post-img
+          height: 140px
+
+@media screen and (max-width: 321px)
+  .user-profile
+    .user-photos
+      .post-img-wrapper
+        .post-img
+          height: 110px

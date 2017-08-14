@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20170812200534) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.string  "location"
-    t.string  "caption"
-    t.string  "image"
-    t.string  "token"
-    t.integer "user_id"
+    t.string   "location"
+    t.string   "caption"
+    t.string   "image"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :image
       t.string :token
       t.integer :user_id
+      t.timestamps
     end
   end
 end

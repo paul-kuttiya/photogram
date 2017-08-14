@@ -11,11 +11,16 @@
       %img{src: "#{@post.image}"}
     .comments{data: {type: "comments"}}
       %ul
-        - 20.times do |n|
+        %li
+          = link_to @post.user.username, @post.user
+          %span= @post.caption
+
+        - 5.times do |n|
           %li
             %a{href: "#"} username #{n+1}
             %span
-              comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1 comment 1  comment 1 comment 1 comment 1
+              comment 1 comment 1 comment 1 
+              
     .like
       %section.like-icon
         = link_to "#" do

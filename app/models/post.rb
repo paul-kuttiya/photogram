@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  validates_presence_of :image
+  default_scope { order(created_at: :desc) }
+  validates_presence_of :image, :caption
   belongs_to :user
 
   mount_uploader :image, PhotoUploader

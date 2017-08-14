@@ -26,6 +26,7 @@ ActiveRecord::Migration.maintain_test_schema!
 #   c.ignore_localhost = true
 # end
 
+
 RSpec.configure do |config|
   #clear email after each test
   config.before(:each) { ActionMailer::Base.deliveries.clear }

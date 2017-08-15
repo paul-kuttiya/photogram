@@ -2,6 +2,7 @@ describe Post do
   it { should validate_presence_of :image }
   it { should validate_presence_of :caption }
   it { should belong_to :user }
+  it { should have_many :comments }
 
   it "should generate token when created instance" do
     post = Fabricate.build(:post)

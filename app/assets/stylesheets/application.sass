@@ -94,13 +94,44 @@ header.profile
 
 form#comment-form
   padding: 0 1.25em
-  input#comment-input
-    border: none
-    padding-left: 0
+  position: relative
+
+  .form-group
     border-top: border(1, $grey)
-    border-radius: 0
-    &:focus
-    box-shadow: none   
+    overflow: hidden
+    margin-bottom: 5px
+    input#comment-input
+      width: 80%
+      float: left
+      border: none
+      padding-left: 0
+      border-radius: 0
+      &:focus
+      box-shadow: none   
+  
+  a.btn-comment, input.btn-comment
+    border: 0
+
+  a.btn-comment
+    padding-left: 0
+    padding-right: 0.25em
+    vertical-align: middle
+    font-size: 1.15em
+
+  input.btn-comment
+    float: right
+    width: 20%
+    color: $primary
+    &:hover
+      text-decoration: none
+
+  span
+    padding: 8px 0
+    display: inline-block
+    vertical-align: middle
+
+input[type="text"]
+  font-size: 1em
 
 // post show
 .post-show

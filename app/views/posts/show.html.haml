@@ -1,35 +1,50 @@
 .post-show
-  %section.post-show-wrapper.clearfix{data: {id: 1}}
+  %section.post-show-wrapper.clearfix{data: {id: @post.id}}
     %header.profile
       = link_to "#", class: "user-info" do
         .media.pull-left
           %img.img-circle{src: "http://via.placeholder.com/175x175"}
         %span 
-          %strong
-            username
+          %strong= @post.user.username
     .user-photo
       %img{src: "#{@post.image}"}
     .comments{data: {type: "comments"}}
       %ul
-        %li
+        %li#caption
           = link_to @post.user.username, @post.user
           %span= @post.caption
 
-        - 5.times do |n|
+        - @post.comments.each do |comment|
           %li
-            %a{href: "#"} username #{n+1}
-            %span
-              comment 1 comment 1 comment 1 
-              
+            = link_to comment.user.username, comment.user
+            %span= comment.description
+
     .like
       %section.like-icon
-        = link_to "#" do
-          .glyphicon.glyphicon-heart
-        = link_to "#", data: {type: "comment_icon", id: 1} do
-          .glyphicon.glyphicon-comment
+        - if current_user
+          = link_to "#" do
+            .glyphicon.glyphicon-heart
+          = link_to "#", data: {type: "comment_icon", id: @post.id} do
+            .glyphicon.glyphicon-comment
+        - else
+          = link_to login_path do
+            .glyphicon.glyphicon-heart
+          = link_to login_path do
+            .glyphicon.glyphicon-comment
       %p 
         %strong
           1,234,567 likes
-    %form#comment-form
-      .form-group
-        %input{type: "text", id: "comment-input", class: "form-control", placeholder: "Add a comment..."} 
+        %br
+        %small.text-muted
+          #{display_time(@post.created_at)}
+    
+    - if logged_in?
+      = form_tag comment_user_post_path(current_user, @post), method: "post", remote: true, id: "comment-form" do
+        .form-group
+          = text_field_tag :description, nil, id: "comment-input", class: "form-control", placeholder: "Add a comment..."
+          = submit_tag "Post", class: "btn btn-comment btn-link"
+    - else
+      = form_tag nil, id: "comment-form" do
+        .form-group
+          = link_to "Log in", login_path, class: "btn-comment"
+          %span.text-muted to like or comment.

@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get '/logout', to: "sessions#destroy"
 
   resources :users, path: "/", only: [:show] do
-    resources :posts, path: "/p"
+    resources :posts, path: "/p" do
+      member do
+        post :comment, to: "comments#create"
+      end
+    end
   end
 
   resources :users, only: [:create]

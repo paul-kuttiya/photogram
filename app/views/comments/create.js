@@ -1,8 +1,8 @@
-
 var $show_page = $('#content .post-show'),
 		$form = $show_page.find('form#comment-form'),
 		$comments_container = $show_page.find('.comments'),
-		$first_comment = $comments_container.find('li#caption');
+		$last_comment = $comments_container.find('li').last();
+		// $first_comment = $comments_container.find('li#caption');
 
 var InsertComment = {
 	comment: function() {
@@ -14,7 +14,7 @@ var InsertComment = {
 		].join("\n"));		
 	},
 	insert: function() {
-		this.comment().insertAfter($first_comment);
+		this.comment().insertAfter($last_comment);
 	},
 	reset: function() {
 		$form.get(0).reset();

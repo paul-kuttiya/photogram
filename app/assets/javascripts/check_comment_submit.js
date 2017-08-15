@@ -1,4 +1,4 @@
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   var $show_page = $('#content .post-show'),
       $form = $show_page.find('form#comment-form'),
       $submit = $form.find('input[type="submit"]');

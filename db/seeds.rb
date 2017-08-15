@@ -15,3 +15,7 @@ end
 100.times do
   Fabricate(:post)
 end
+
+300.times do
+  Fabricate(:comment, post: Post.all.sample, user: User.all.sample)
+end

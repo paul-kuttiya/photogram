@@ -1,4 +1,4 @@
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   $main = $('#content .post-show');
 
   var userShow = {

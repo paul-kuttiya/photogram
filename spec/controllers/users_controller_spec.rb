@@ -83,4 +83,69 @@ describe UsersController do
     end
   end
 
+  describe "GET edit" do
+    context "non user" do
+      it_behaves_like "require user" do
+        let(:action) { get :edit }
+      end
+    end
+
+    context "user" do
+      it "renders edit page" do
+        user = Fabricate(:user)
+        logged_in(user)
+
+        get :edit
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "POST update" do
+    context "non user" do
+      it_behaves_like "require user" do
+        let(:action) { post :update, user: Fabricate.attributes_for(:user) }
+      end
+    end
+
+    context "user" do
+      let(:user) { Fabricate(:user) }
+
+      context "valid inputs" do
+        before do
+          logged_in(user)
+          post :update, user: { username: "new_username" }
+        end
+
+        it "saves updated info to DB" do
+          expect(User.first.username).to eq "new_username"
+        end
+
+        it "redirects to edit page" do
+          expect(response).to redirect_to accounts_edit_path
+        end
+
+        it "flashes message" do
+          expect(flash[:info]).to be_present
+        end
+      end
+
+      context "invalid inputs" do
+        before do
+          logged_in(user)
+          post :update, user: { username: nil }
+        end
+
+        it "render edit template" do
+          expect(response).to render_template :edit
+        end
+
+        it "has errors messages array" do
+          expect(assigns[:user].errors.full_messages).not_to be_empty
+        end
+      end
+
+    end
+  end
+
 end

@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
   validates_presence_of :image, :caption
   belongs_to :user
-  has_many :comments, -> { order(created_at: :desc) }
+  has_many :comments, -> { order(created_at: :asc) }
 
   mount_uploader :image, PhotoUploader
 

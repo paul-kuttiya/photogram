@@ -3,4 +3,6 @@ Fabricator(:user) do
   username { Faker::Internet.unique.user_name(5..20) }  
   full_name { Faker::Name.unique.name }
   password { Faker::Internet.password }
+  bio { Faker::Lorem.paragraph(3) }
+  website { Faker::Internet.url }
 end

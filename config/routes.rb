@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/ui(/:action)', controller: 'ui'
   
   get '/signup', to: "users#new"
-  get '/login', to: "sessions#new" 
+  get '/login', to: "sessions#new"
   
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/accounts/edit', to: 'users#edit'
+  post '/accounts/update', to: 'users#update'
 
   resources :users, only: [:create]
 end

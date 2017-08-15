@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+  
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email, case_sensitive: false
   validates :username, length: { in: 5..20 }

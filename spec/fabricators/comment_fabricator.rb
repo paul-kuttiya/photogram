@@ -1,3 +1,3 @@
 Fabricator(:comment) do
-  description { Faker::Lorem.sentences(1) }
+  description { Faker::Lorem.words(5).join(' ') }
 end

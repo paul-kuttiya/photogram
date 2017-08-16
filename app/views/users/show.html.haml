@@ -10,10 +10,9 @@
         - if logged_in?
           - follow = @follow ? "Follow" : "Following"
           = button_to follow, user_follows_path(@user, follow: true), class: (@follow ? "btn btn-primary" : "btn btn-default")
-          
-          
-          -# = link_to follow, user_follows_path(@user, follow: @follow), method: "post", class: "btn btn-info"
-        
+        - else
+          = link_to "Follow", login_path, class: "btn btn-primary"
+
     .user-status
       .lead.user-record
         %span  

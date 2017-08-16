@@ -144,7 +144,6 @@ describe UsersController do
           expect(assigns[:user].errors.full_messages).not_to be_empty
         end
       end
-
     end
   end
 

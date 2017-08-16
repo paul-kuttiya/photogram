@@ -4,8 +4,12 @@ var $show_page = $('#content .post-show'),
 		$last_comment = $comments_container.find('li').last();
 		// $first_comment = $comments_container.find('li#caption');
 
+var $show_page = $('#content .post-show'),
+		$form = $show_page.find('form#comment-form'),
+		$submit = $form.find('input[type="submit"]');
+
 var InsertComment = {
-	comment: function() {
+	$comment: function() {
 		return $([
 			"<li>",
 			"  <a href='/<%= @comment.user.username %>'><%= @comment.user.username %></a>",
@@ -14,14 +18,21 @@ var InsertComment = {
 		].join("\n"));		
 	},
 	insert: function() {
-		this.comment().insertAfter($last_comment);
+		this.$comment().insertAfter($last_comment);
 	},
 	reset: function() {
 		$form.get(0).reset();
 	},
+	disableSubmit: function() {
+		$submit.attr('disabled', 'disabled');
+	},
+	scrollToLastItem: function() {
+	},
 	init: function() {
 		this.insert();
 		this.reset();
+		this.disableSubmit();
+		this.scrollToLastItem();
 	},
 }
 

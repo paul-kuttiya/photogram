@@ -5,10 +5,15 @@
     .col-md-8.col-sm-8.col-xs-8.clearfix
       %h2.media-heading= @user.username
       - if @user == current_user
-        = link_to "Edit profile", accounts_edit_path, class: "label label-default" 
-      - else @user != current_user
-        - follow = @follow ? "Follow" : "Following"
-        = link_to follow, user_follows_path(@user, follow: @follow), method: "post", class: "btn btn-info" 
+        = link_to "Edit profile", accounts_edit_path, class: "btn btn-default"
+      - else
+        - if logged_in?
+          - follow = @follow ? "Follow" : "Following"
+          = button_to follow, user_follows_path(@user, follow: true), class: (@follow ? "btn btn-primary" : "btn btn-default")
+          
+          
+          -# = link_to follow, user_follows_path(@user, follow: @follow), method: "post", class: "btn btn-info"
+        
     .user-status
       .lead.user-record
         %span  

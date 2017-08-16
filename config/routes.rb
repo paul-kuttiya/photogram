@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         post :comment, to: "comments#create"
       end
     end
+
+    resources :relationships, only: [:create], as: 'follows'
   end
 
   get '/accounts/edit', to: 'users#edit'

@@ -8,7 +8,18 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id"
+  has_many :followings, class_name: "Relationship", foreign_key: "following_id"
+  
   has_secure_password validation: false
+
+  def followers
+    Relationship.where(following: id).map(&:follower)    
+  end
+
+  def followings
+    Relationship.where(follower: id).map(&:following)
+  end
 
   def to_param
     username

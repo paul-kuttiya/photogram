@@ -4,7 +4,10 @@
       %img.img-circle.media-object{src: "http://via.placeholder.com/175x175"}
     .col-md-8.col-sm-8.col-xs-8.clearfix
       %h2.media-heading= @user.username
-      = link_to "Edit profile", accounts_edit_path, class: "label label-default" 
+      - if @user == current_user
+        = link_to "Edit profile", accounts_edit_path, class: "label label-default" 
+      - else @user != current_user
+        = link_to "Follow", "#", class: "btn btn-info" 
     .user-status
       .lead.user-record
         %span  

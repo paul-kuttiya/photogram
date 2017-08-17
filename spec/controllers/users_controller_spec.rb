@@ -114,11 +114,11 @@ describe UsersController do
       context "valid inputs" do
         before do
           logged_in(user)
-          post :update, user: { username: "new_username" }
+          post :update, user: { username: "newuser" }
         end
 
         it "saves updated info to DB" do
-          expect(User.first.username).to eq "new_username"
+          expect(User.first.username).to eq "newuser"
         end
 
         it "redirects to edit page" do

@@ -27,4 +27,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def delete_old_tmp_file(dummy)
     @old_tmp_file.try :delete
   end
+
+  ##for validation
+  def size_range
+    0..1.megabytes
+  end
 end

@@ -8,14 +8,23 @@
 
 Fabricate(:user, username: "admin", password: "admin")
 
-10.times do 
+15.times do 
   Fabricate(:user)
 end
 
-100.times do
+200.times do
   Fabricate(:post)
 end
 
 300.times do
   Fabricate(:comment, post: Post.all.sample, user: User.all.sample)
+end
+
+
+200.times do 
+  follower = User.all.sample
+  leader = User.all.sample
+
+  next if follower == leader || Relationship.find_by(follower: follower, leader: leader)
+  Relationship.create(follower: follower, leader: leader)
 end

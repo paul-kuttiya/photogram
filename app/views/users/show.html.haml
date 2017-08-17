@@ -1,7 +1,7 @@
 .user-profile
   .media.profile-head
     .col-md-4.col-sm-4.col-xs-4.user-cover
-      %img.img-circle.media-object{src: "http://via.placeholder.com/175x175"}
+      %img.img-circle.media-object{src: has_image?(@user.avatar)}
     .col-md-8.col-sm-8.col-xs-8.clearfix
       %h2.media-heading= @user.username
       - if @user == current_user

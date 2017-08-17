@@ -2,10 +2,11 @@ class User < ActiveRecord::Base
   include Voteable
 
   mount_uploader :avatar, AvatarUploader
-  
+  validates_integrity_of :avatar
+
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email, case_sensitive: false
-  validates :username, length: { in: 5..20 }
+  validates :username, length: { in: 5..20 }, format: { with: /\A[a-zA-Z0-9]+\Z/ , message: "Letters and numbers only." } 
   validates :password, presence: true, length: { in: 5..20 }, on: :create
 
   has_many :posts

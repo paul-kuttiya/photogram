@@ -5,6 +5,6 @@ Fabricator(:post) do
   user { User.all.sample }
 
   image do
-    File.open(Rails.root + Dir["public/images/*"].sample)
+    File.open(Rails.root + Dir["public/post_images/*"].sample)
   end
 end

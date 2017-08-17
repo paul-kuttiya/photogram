@@ -8,4 +8,5 @@ class Post < ActiveRecord::Base
   has_many :comments, -> { order(created_at: :asc) }
 
   mount_uploader :image, PhotoUploader
+  validates_integrity_of :image, message: "cannot be larger than 1MB." #carrierwave
 end

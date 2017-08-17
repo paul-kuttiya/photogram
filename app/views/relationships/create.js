@@ -1,9 +1,11 @@
-var $input = $('.user-profile .button_to').find('input[type="submit"]');
+var $profile = $('.user-profile'),
+    $input = $profile.find('.button_to input[type="submit"]'),
+    $follower = $profile.find('#follower'),
+    $following = $profile.find('#following');
 
 var toggleFollow = {
   unfollow: '<%= @unfollow %>' === 'true',
   followToggle: function() {
-    console.log(this.unfollow)
     if (this.unfollow) {
       this.toggleButton('Follow', 'btn-default', 'btn-primary');
     } else {
@@ -13,15 +15,18 @@ var toggleFollow = {
   toggleButton: function(text, remove_class, add_class) {
     $input.val(text).removeClass(remove_class).addClass(add_class);
   },
+  updateFollowText: function($follower) {
+    var value = parseInt($follower.text(), 10),
+        update_value;
+    
+    update_value = (this.unfollow) ? value - 1 : value + 1;
+
+    return $follower.text(update_value); 
+  },
   init: function() {
     this.followToggle();
+    this.updateFollowText($follower);
   },
 }
 
 toggleFollow.init();
-
-// if ('<%= @unfollow %>' === 'true') {
-//   $input.val('Follow').removeClass('btn-default').addClass('btn-primary');
-// } else {
-//   $input.val('Following').removeClass("btn-primary").addClass('btn-default');
-// }

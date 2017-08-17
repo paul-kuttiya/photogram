@@ -10,7 +10,7 @@ $red: #d9534f
 
 @function glyphicon($px, $color)
   $pixel: ($px + px)
-  @return -$pixel 0 $default, 0 $pixel $default, $pixel 0 $default, 0 -1.5px $default
+  @return -$pixel 0 $color, 0 $pixel $color, $pixel 0 $color, 0 -1.5px $color
   
 //Import bootstrap-sprockets
 @import "bootstrap-sprockets"
@@ -80,6 +80,9 @@ header.profile
       margin: 0.5em 0
       padding-right: 0.5em
 
+button:focus, input[type="submit"]:focus
+  outline: none
+
 .like
   padding: 0 1.25em
   section.like-icon
@@ -88,9 +91,17 @@ header.profile
     border-top: border(1, $grey)
     a
       font-size: 1.5em
-      margin-right: 0.5em
-      &:focus, &:hover
-        color: $primary
+    .button_to
+      display: inline-block
+      margin-right: 1.5em
+      button
+        font-size: 1.52em
+        background: none
+        border: none
+        padding: 0
+        .active
+          text-shadow: glyphicon(1.5, $red)
+          color: $red
 
 form#comment-form
   padding: 0 1.25em
@@ -132,6 +143,7 @@ form#comment-form
 
 input[type="text"]
   font-size: 1em
+
 
 // post show
 .post-show

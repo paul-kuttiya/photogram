@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :posts, path: "/p" do
       member do
         post :comment, to: "comments#create"
+        post :like, to: "posts#like"
       end
     end
 

@@ -21,8 +21,8 @@
 
     .like
       %section.like-icon
-        - if current_user
-          = button_to "#" do
+        - if logged_in?
+          = button_to like_user_post_path(@user, @post), remote: true do
             .glyphicon.glyphicon-heart
           = link_to "#", data: {type: "comment_icon", id: @post.id} do
             .glyphicon.glyphicon-comment

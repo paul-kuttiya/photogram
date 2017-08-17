@@ -18,12 +18,28 @@
         %span  
           %strong= @user.posts.length 
           posts
-        %span 
-          %strong= @user.comments.length 
-          comments
-        %span 
-          %strong 33 
-          Likes
+
+        - if logged_in?
+          %span
+            = link_to "#" do
+              %strong#follower
+                #{@user.followers.length} 
+              %span
+                followers
+          %span 
+            = link_to "#" do
+              %strong#following
+                #{@user.leaders.length} 
+              %span
+                followings
+
+        - else
+          %span 
+            %strong= @user.followers.length
+            followers
+          %span 
+            %strong= @user.leaders.length
+            followings
       .lead.user-detail
         %p= @user.bio
         - if @user.website

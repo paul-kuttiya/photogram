@@ -24,6 +24,4 @@ describe Post do
       expect(post.token).not_to be_nil
     end
   end
-
-
 end

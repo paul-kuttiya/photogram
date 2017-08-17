@@ -23,7 +23,6 @@ gem 'fabrication'
 gem 'pg', '0.20'
 gem 'sidekiq', '4.2.10'
 gem 'uglifier'
-gem 'voteable_pkuttiya'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Voteable
+
   mount_uploader :avatar, AvatarUploader
   
   validates_presence_of :username, :email
@@ -10,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id"
   has_many :leaders, class_name: "Relationship", foreign_key: "leader_id"
-  
+
   has_secure_password validation: false
 
   def followers

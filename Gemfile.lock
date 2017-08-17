@@ -282,7 +282,6 @@ GEM
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     vcr (3.0.3)
-    voteable_pkuttiya (0.0.0)
     webmock (3.0.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -335,7 +334,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   vcr (= 3.0.3)
-  voteable_pkuttiya
   webmock
 
 RUBY VERSION

@@ -9,7 +9,7 @@
       - else
         - if logged_in?
           - follow = @follow ? "Follow" : "Following"
-          = button_to follow, user_follows_path(@user, follow: true), class: (@follow ? "btn btn-primary" : "btn btn-default")
+          = button_to follow, user_follows_path(@user, follow: true), class: (@follow ? "btn btn-primary" : "btn btn-default"), remote: true
         - else
           = link_to "Follow", login_path, class: "btn btn-primary"
 

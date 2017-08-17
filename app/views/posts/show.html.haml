@@ -22,7 +22,7 @@
     .like
       %section.like-icon
         - if current_user
-          = link_to "#" do
+          = button_to "#" do
             .glyphicon.glyphicon-heart
           = link_to "#", data: {type: "comment_icon", id: @post.id} do
             .glyphicon.glyphicon-comment

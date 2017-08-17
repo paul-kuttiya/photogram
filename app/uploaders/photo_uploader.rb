@@ -18,6 +18,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
   end
 
+  def cache!(new_file)
+    super
+    @old_tmp_file = new_file
+  end
+
   ##delete tmp
   def delete_old_tmp_file(dummy)
     @old_tmp_file.try :delete

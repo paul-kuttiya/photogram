@@ -17,7 +17,7 @@
         - @post.comments.each do |comment|
           %li
             = link_to comment.user.username, comment.user
-            %span= comment.description
+            %span= mention(comment.description)
 
     .like
       %section.like-icon

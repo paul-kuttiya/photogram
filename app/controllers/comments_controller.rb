@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(description: params["description"], user: current_user, post: get_post)
+    # binding.pry
 
     if @comment.save
       respond_to do |format|

@@ -11,4 +11,8 @@ module ApplicationHelper
   def has_image?(image=nil)
     image.path || "/placeholder/profile.png"
   end
+
+  def mention(text)
+    text.gsub(/@(\S+)/, '<a href=/\1>@\1</a>').html_safe
+  end
 end

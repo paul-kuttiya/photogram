@@ -19,8 +19,10 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create], as: 'follows'
   end
 
+  resources :users, only: [:create]
+
   get '/accounts/edit', to: 'users#edit'
   post '/accounts/update', to: 'users#update'
 
-  resources :users, only: [:create]
+  resources :tags, only: [:show]
 end

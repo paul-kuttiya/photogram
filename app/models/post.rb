@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   include Tokenable
-  include Voteable
+  include Mixin::Voteable
 
   default_scope { order(created_at: :desc) }
   validates_presence_of :image, :caption
@@ -20,5 +20,9 @@ class Post < ActiveRecord::Base
 
   def hashtags
     caption.scan(/#\w+/).uniq.map { |tag| tag[1..-1].downcase }
+  end
+
+  def liked_by?(user)
+    !!votes.find_by(user: user)
   end
 end

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include Voteable
+  include Mixin::Voteable
 
   mount_uploader :avatar, AvatarUploader
   validates_integrity_of :avatar

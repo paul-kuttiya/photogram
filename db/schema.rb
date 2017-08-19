@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819005926) do
+ActiveRecord::Schema.define(version: 20170819153237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20170819005926) do
     t.integer  "mention_by_id"
     t.integer  "mention_at_id"
     t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.integer  "noticeable_id"
+    t.string   "noticeable_type"
+    t.boolean  "mark",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

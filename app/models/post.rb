@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :image, :caption
   belongs_to :user
   has_many :comments, -> { order(created_at: :asc) }
-  has_many :mentions, class_name: "Mention"
+  has_many :mentions
 
   has_many :post_tags
   has_many :tags, through: :post_tags
@@ -24,5 +24,9 @@ class Post < ActiveRecord::Base
 
   def liked_by?(user)
     !!votes.find_by(user: user)
+  end
+
+  def mention_users
+
   end
 end

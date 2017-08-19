@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Mixin::Voteable
+  include Mixin::Noticeable 
 
   mount_uploader :avatar, AvatarUploader
   validates_integrity_of :avatar
@@ -13,8 +14,10 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id"
   has_many :leaders, class_name: "Relationship", foreign_key: "leader_id"
-  has_many :mentioned, class_name: "Mention", foreign_key: "mention_at_id" #mentions at me
-  has_many :mentions, class_name: "Mention", foreign_key: "mention_by_id" #mentions from me
+  has_many :mentioned, class_name: "Mention", foreign_key: "mention_at_id"
+  has_many :mentions, class_name: "Mention", foreign_key: "mention_by_id"
+  has_many :notices_by, class_name: "Notice", foreign_key: "to_id"
+  has_many :notices_to, class_name: "Notice", foreign_key: "from_id"
   
   has_secure_password validation: false
 

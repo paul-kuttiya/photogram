@@ -28,9 +28,20 @@ class CommentsController < ApplicationController
   def build_mention
     if @comment.has_mention?
       @comment.mention_users.each do |mention|
-        @mention = User.find_by(username: mention)
-        Mention.create(mention_at: @mention, mention_by: current_user, post: get_post)
+        #check if current_user already mention other user from the same post
+        @mention_at = User.find_by(username: mention)
+
+        @mention = Mention.find_by(current_user_mention)
+
+        unless @mention
+          Mention.create(current_user_mention)
+          Notice.create(user: @mention_at)
+        end
       end
     end
+  end
+
+  def current_user_mention
+    {mention_at: @mention_at, mention_by: current_user, post: get_post}
   end
 end

@@ -15,16 +15,20 @@
       -#   %button.btn.btn-default{:type => "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
-          %li
+          %li.icon-list
             = link_to new_user_post_path(current_user) do
+              +
               = fa_icon "photo"
-              New Photo
+          %li.icon-list
+            = link_to "#" do
+              = fa_icon "heart-o"
+              
         - unless logged_in?
           %li= link_to "Login", login_path
           %li= link_to "Signup", signup_path
         
         - if logged_in?
-          %li.dropdown
+          %li.dropdown.icon-list
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               = fa_icon "user-o"
               %span.caret

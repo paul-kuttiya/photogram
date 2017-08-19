@@ -11,4 +11,12 @@ module Mixin
       Vote.where(voteable_type: model.titleize, user: self)
     end
   end
+
+  module Noticeable
+    extend ActiveSupport::Concern
+
+    included do
+      has_many :notices, as: :noticeable
+    end
+  end
 end

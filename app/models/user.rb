@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id"
   has_many :leaders, class_name: "Relationship", foreign_key: "leader_id"
-
+  has_many :mentioned, class_name: "Mention", foreign_key: "mention_at_id" #mentions at me
+  has_many :mentions, class_name: "Mention", foreign_key: "mention_by_id" #mentions from me
+  
   has_secure_password validation: false
 
   def followers

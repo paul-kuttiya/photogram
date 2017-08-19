@@ -12,7 +12,8 @@ module ApplicationHelper
     image.path || "/placeholder/profile.png"
   end
 
-  def mention(text)
-    text.gsub(/@(\S+)/, '<a href=/\1>@\1</a>').html_safe
+  def process_link(text)
+    mention = text.gsub(/@(\w+)/, '<a href=/\1>@\1</a>').html_safe
+    hash = mention.gsub(/#(\w+)/, '<a href=/tags/\1>#\1</a>').html_safe
   end
 end

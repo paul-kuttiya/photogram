@@ -3,7 +3,7 @@ var $show_page = $('#content .post-show'),
 		$comments_container = $show_page.find('.comments'),
 		$last_comment = $comments_container.find('li').last();
 		// $first_comment = $comments_container.find('li#caption');
-		console.log('<%= mention(@comment.description) %>')
+		console.log('<%= process_link(@comment.description) %>')
 
 var $show_page = $('#content .post-show'),
 		$form = $show_page.find('form#comment-form'),
@@ -14,7 +14,7 @@ var InsertComment = {
 		return $([
 			"<li>",
 			"  <a href='/<%= @comment.user.username %>'><%= @comment.user.username %></a>",
-			"  <span><%= mention(@comment.description) %></span>",
+			"  <span><%= process_link(@comment.description) %></span>",
 			"</li>"
 		].join("\n"));		
 	},

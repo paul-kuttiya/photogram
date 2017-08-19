@@ -7,6 +7,6 @@ class Comment < ActiveRecord::Base
   end
 
   def mention_users
-    description.scan(/@\w+/).map {|mention| mention[1..-1]}
+    description.scan(/@\w+/).map { |mention| mention[1..-1].downcase }
   end
 end

@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(create_post.merge!(user: current_user))
 
     if @post.save
+      create_hashtag
       redirect_to user_post_path(current_user, @post)
     else
       render :new
@@ -50,4 +51,17 @@ class PostsController < ApplicationController
     @user = User.find_by(username: params[:user_id])
   end
 
+  def create_hashtag
+    if @post.has_hashtags?
+      @post.hashtags.each do |tag|
+        #Validates extra layer both in controller and model
+        @tag = tag_exists?(tag)
+        @tag.posts << @post unless @tag.posts.include?(@post)
+      end
+    end
+  end
+
+  def tag_exists?(tag)
+    Tag.exists?(name: tag) ? Tag.find_by(name: tag) : Tag.create(name: tag) 
+  end
 end

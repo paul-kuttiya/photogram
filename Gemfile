@@ -25,6 +25,7 @@ gem 'sidekiq', '4.2.10'
 gem 'uglifier'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'route_downcaser'
 
 group :development do
   gem "awesome_print"

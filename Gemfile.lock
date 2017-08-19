@@ -218,6 +218,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (3.3.3)
+    route_downcaser (1.2.1)
+      activesupport (>= 3.2)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -325,6 +327,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.2.0)
   rails_12factor
+  route_downcaser
   rspec-rails
   sass-rails
   shoulda-matchers (= 2.7.0)

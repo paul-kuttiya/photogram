@@ -8,6 +8,17 @@ class Post < ActiveRecord::Base
   has_many :comments, -> { order(created_at: :asc) }
   has_many :mentions, class_name: "Mention"
 
+  has_many :post_tags
+  has_many :tags, through: :post_tags
+
   mount_uploader :image, PhotoUploader
   validates_integrity_of :image, message: "cannot be larger than 1MB." #carrierwave
+
+  def has_hashtags?
+    hashtags.present?
+  end
+
+  def hashtags
+    caption.scan(/#\w+/).uniq.map { |tag| tag[1..-1].downcase }
+  end
 end

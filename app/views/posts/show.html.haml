@@ -12,7 +12,7 @@
       %ul
         %li#caption
           = link_to @post.user.username, @post.user
-          %span= @post.caption
+          %span= process_link(@post.caption)
 
         - @post.comments.each do |comment|
           %li

@@ -16,7 +16,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     if Rails.env.production?
       return "images/user_#{model.user_id}/posts/#{model.id}"
     else
-      return "images/"
+      return "avatars"
     end
   end
 

@@ -1,9 +1,9 @@
 .post-show
   %section.post-show-wrapper.clearfix{data: {id: @post.id}}
     %header.profile
-      = link_to "#", class: "user-info" do
+      = link_to @user, class: "user-info" do
         .media.pull-left
-          %img.img-circle{src: "http://via.placeholder.com/175x175"}
+          %img.img-circle{src: "#{has_image?(@user.avatar)}"}
         %span 
           %strong= @post.user.username
     .user-photo

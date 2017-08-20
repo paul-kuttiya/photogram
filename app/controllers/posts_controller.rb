@@ -25,6 +25,7 @@ class PostsController < ApplicationController
       @like.destroy
     else
       @like = Vote.create(user: current_user, voteable: @post)
+      #create notice
     end
     
     @unlike = @like.destroyed?
@@ -55,6 +56,7 @@ class PostsController < ApplicationController
     if @post.has_hashtags?
       @post.hashtags.each do |tag|
         #Validates extra layer both in controller and model
+        tag = tag.downcase
         @tag = tag_exists?(tag)
         @tag.posts << @post unless @tag.posts.include?(@post)
       end

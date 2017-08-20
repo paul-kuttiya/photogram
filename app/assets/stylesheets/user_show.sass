@@ -28,6 +28,8 @@
     .user-cover
       .media-object
         margin: 0 auto
+        width: 175px
+        height: 175px
 
     .user-status
       width: 66.66%
@@ -58,6 +60,35 @@
         background-position: 50% 50%
         background-repeat: no-repeat
         background-size: cover
+    
+      a
+        display: block
+        position: relative
+        // width: 50%
+        &:hover .img-overlay
+          opacity: 1
+
+      .img-overlay
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        height: 100%
+        width: 100%
+        opacity: 0
+        transition: .2s ease
+        background-color: rgba(51, 51, 51, 0.5)
+        .text
+          color: white
+          font-size: 20px
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          -ms-transform: translate(-50%, -50%)
+          span
+            padding: 0 0.5em
 
 @media screen and (max-width: 770px)
   .photos-wrapper

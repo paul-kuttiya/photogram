@@ -1,6 +1,7 @@
 module ApplicationHelper
   def display_website(website)
-    return if website.downcase =~ /\Ahttps?\:\/\//
+    has_uri = website.downcase =~ /\Ahttps?\:\/\//
+    return if website.nil? || website.empty? || has_uri
     URI::HTTP.build({host: website}).to_s
   end
 
@@ -8,8 +9,9 @@ module ApplicationHelper
     t.strftime("%B %d, %Y") 
   end
 
-  def has_image?(image=nil)
-    image.path || "/placeholder/profile.png"
+  def has_image?(avatar=nil)
+    return "/placeholder/profile.png" if !avatar.path
+    avatar
   end
 
   def process_link(text)

@@ -9,17 +9,32 @@
 Fabricate(:user, username: "admin", password: "admin")
 
 15.times do 
-  Fabricate(:user)
+  Fabricate(:user,
+    avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
+  )
 end
+
+50.times { Fabricate(:tag) }
 
 200.times do
-  Fabricate(:post)
+  tags = Tag.all.sample(3)
+  hashtags = tags.map{ |tag| "##{tag.name}" }
+  
+  post = Fabricate(:post, caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1))
+  post.tags = tags
 end
 
-300.times do
+400.times do
   Fabricate(:comment, post: Post.all.sample, user: User.all.sample)
 end
 
+3000.times do
+  user = User.all.sample
+  post = Post.all.sample
+  
+  next if Vote.find_by(user: user, voteable: post)
+  Vote.create(user: user, voteable: post, vote: true)
+end
 
 200.times do 
   follower = User.all.sample

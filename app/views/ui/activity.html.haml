@@ -1,0 +1,14 @@
+.activity.clearfix
+  .col-md-6.col-md-offset-3
+    %ul
+      - 5.times do
+        %li.clearfix
+          .notice.pull-left
+            = link_to "#" do 
+              %img.img-circle(src="#{has_image?(current_user.avatar)}")
+              %strong abcdefg
+            %span started following you.
+            %span.text-muted 10w
+          .pull-right
+            = link_to "#" do
+              %img.img-object(src="#{has_image?(current_user.avatar)}")

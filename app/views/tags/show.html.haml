@@ -6,4 +6,7 @@
         %li.col-md-4.col-sm-4.col-xs-4.no-padding.post-img-wrapper
           = link_to user_post_path(post.user, post) do
             .post-img{style: "background-image: url(#{post.image})"}
-            
+            .img-overlay
+              .text
+                %span #{fa_icon "heart"} #{post.votes.length}
+                %span #{fa_icon "comment"} #{post.comments.length}

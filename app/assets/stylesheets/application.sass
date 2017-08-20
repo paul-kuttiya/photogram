@@ -30,6 +30,24 @@ $red: #d9534f
 //import all files
 @import "./*"
 
+//activity
+.activity
+  li
+    padding: 1em 0
+    border-bottom: 1px solid $grey
+    .notice
+      img
+        margin-right: .5em
+      strong
+        color: $default
+      span.text-muted
+        margin-left: .5em
+    &:first-of-type
+      padding-top: 0
+    &:last-of-type
+      border: none
+
+// general
 body
   background-color: $bg
 
@@ -40,6 +58,10 @@ nav
   li.icon-list
     > a
         font-size: 1.5em
+
+ul
+  padding: 0
+  list-style: none
 
 .glyphicon
   text-shadow: glyphicon(1.5, $default)
@@ -77,8 +99,6 @@ header.profile
 .comments
   padding: 1.25em
   ul
-    padding: 0
-    list-style: none
     li
       margin: 0.5em 0
       padding-right: 0.5em
@@ -94,9 +114,10 @@ button:focus, input[type="submit"]:focus
     border-top: border(1, $grey)
     a
       font-size: 1.5em
+      margin-right: 15px
     .button_to
       display: inline-block
-      margin-right: 1.5em
+      margin-right: 15px
       button
         font-size: 1.52em
         background: none

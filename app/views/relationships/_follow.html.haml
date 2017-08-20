@@ -1,0 +1,11 @@
+%ul
+  - @follows.each do |user|
+    %li.clearfix
+      = link_to user do
+        %img.small-img.img-circle(src="#{has_image?(user.avatar)}")
+      .names
+        = link_to user.username, user
+        %small.text-muted #{user.full_name}
+      .pull-right
+        - follow = !current_user.follow?(user) 
+        = button_to (follow ? "Follow" : "Following"), user_follows_path(user), class: (follow ? "btn btn-primary" : "btn btn-default"), data: {id: user.id}, remote: true

@@ -1,1 +1,1 @@
-$('.modal-body#follower').html('<%= j render "_follower" %>')
+$('.modal-body#follower').html('<%= j render "follow" %>');

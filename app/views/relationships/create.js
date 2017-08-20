@@ -1,5 +1,5 @@
-var $profile = $('.photos-wrapper'),
-    $input = $profile.find('.button_to input[type="submit"]'),
+var $profile = $('body'),
+    $input = $profile.find('.button_to input[data-id="<%= @user.id %>"]'),
     $follower = $profile.find('#follower'),
     $following = $profile.find('#following');
 

@@ -1,10 +1,7 @@
-#follow-modal.modal.fade
+.follow-modal.modal.fade{id: "#{title}-modal"}
   .modal-content
     .modal-header
       %button.close{"aria-hidden": "true", "data-dismiss": "modal", type: "button"}
         = fa_icon "times-circle-o", class: "fa-2x"
-      %h4#follow-modal-header Modal header
-    .modal-body#follower
-      %ul
-        - 100.times do |n|
-          %li a list #{n + 1}
+      %h4#follow-modal-header #{title.capitalize}s
+    .modal-body{id: "#{title}"}

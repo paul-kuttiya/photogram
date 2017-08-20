@@ -1,21 +1,22 @@
 //follow-modal
-#follow-modal
-  width: 51%
+.follow-modal
+  width: 600px
   margin: 2em auto
   .modal-content
     position: relative
     .modal-header
       margin-top: -1px
+      background-color: $white
       position: fixed
-      width: 50%
+      width: 583px
       height: 3em
       z-index: 10
-      background-color: $white
       button.close
         position: fixed
         right: 22%
         top: .5em
         color: $white
+
     .modal-body
       padding: 0
       z-index: 5
@@ -26,3 +27,23 @@
           display: block
           height: 3em
           border-bottom: border(1, $grey)
+          a img
+            margin-right: 0.5em
+            display: inline-block
+          .names
+            display: inline-block
+            vertical-align: top
+            position: relative
+            width: 50%
+            height: 48px
+            a, small
+              width: 100%
+              font-size: 14px
+              position: absolute
+            a
+              top: 0
+            small
+              top: 18px
+          .pull-right
+            .btn
+              font-size: initial

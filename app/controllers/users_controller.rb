@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_signed_in, only: [:new, :create]
-
   before_action :require_user, only: [:edit, :update]
-
   before_action :find_current_user, only: [:edit, :update]
 
   def new
@@ -24,7 +22,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:id])
-    @follow = !current_user.follow?(@user) if current_user
   end
 
   def update

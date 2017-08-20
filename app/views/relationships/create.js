@@ -1,7 +1,7 @@
 var $profile = $('body'),
     $input = $profile.find('.button_to input[data-id="<%= @user.id %>"]'),
-    $follower = $profile.find('#follower'),
-    $following = $profile.find('#following');
+    $follower = $profile.find('#follower_<%= @user.id %>'),
+    $following = $profile.find('#following_<%= @user.id %>');
 
 var toggleFollow = {
   unfollow: '<%= @unfollow %>' === 'true',

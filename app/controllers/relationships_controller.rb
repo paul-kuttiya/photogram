@@ -16,4 +16,10 @@ class RelationshipsController < ApplicationController
       format.js
     end
   end
+
+  def follower
+  end
+
+  def followings
+  end
 end

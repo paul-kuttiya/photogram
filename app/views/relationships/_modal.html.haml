@@ -1,0 +1,10 @@
+#follow-modal.modal.fade
+  .modal-content
+    .modal-header
+      %button.close{"aria-hidden": "true", "data-dismiss": "modal", type: "button"}
+        = fa_icon "times-circle-o", class: "fa-2x"
+      %h4#follow-modal-header Modal header
+    .modal-body#follower
+      %ul
+        - 100.times do |n|
+          %li a list #{n + 1}

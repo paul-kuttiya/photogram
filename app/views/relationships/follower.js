@@ -1,0 +1,1 @@
+$('.modal-body#follower').html('<%= j render "_follower" %>')

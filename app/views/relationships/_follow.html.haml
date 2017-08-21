@@ -9,4 +9,4 @@
       .pull-right
         - follow = !current_user.follow?(user)
         - unless user == current_user
-          = button_to (follow ? "Follow" : "Following"), user_follows_path(user), class: (follow ? "btn btn-primary" : "btn btn-default"), data: {id: user.id}, remote: true
+          = button_to (follow ? "Follow" : "Following"), user_follows_path(user, user_page: @user_page), class: (follow ? "btn btn-primary" : "btn btn-default"), data: {id: user.id}, remote: true

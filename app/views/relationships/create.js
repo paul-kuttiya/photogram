@@ -1,7 +1,8 @@
 var $profile = $('body'),
+    currentUserPage = '<%= @user_page %>' === 'true',
     $input = $profile.find('.button_to input[data-id="<%= @user.id %>"]'),
-    $follower = $profile.find('#follower_<%= @user.id %>'),
-    $following = $profile.find('#following_<%= @user.id %>');
+    $follower = currentUserPage ? $profile.find('#follower') : $profile.find('#follower_<%= @user.id %>'),
+    $following = currentUserPage ? $profile.find('#following') : $profile.find('#following_<%= @user.id %>');
 
 var toggleFollow = {
   unfollow: '<%= @unfollow %>' === 'true',
@@ -15,17 +16,26 @@ var toggleFollow = {
   toggleButton: function(text, remove_class, add_class) {
     $input.val(text).removeClass(remove_class).addClass(add_class);
   },
-  updateFollowText: function($follower) {
-    var value = parseInt($follower.text(), 10),
+  getValue: function(button) {
+    parseInt(button.text(), 10);
+  },
+  updateFollowText: function(follow) {
+    var value = this.getValue(follow),
         update_value;
     
     update_value = (this.unfollow) ? value - 1 : value + 1;
 
-    return $follower.text(update_value); 
+    return this.updateValue(follow, update_value);
+  },
+  getValue: function(button) {
+    return parseInt(button.text(), 10);
+  },
+  updateValue: function(button, new_value) {
+    button.text(new_value)
   },
   init: function() {
     this.followToggle();
-    this.updateFollowText($follower);
+    currentUserPage ? this.updateFollowText($following) : this.updateFollowText($follower);
   },
 }
 

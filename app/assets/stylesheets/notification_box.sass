@@ -13,20 +13,24 @@
     background-color: $white
     border: border(1, $grey)
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25)
-    overflow: visible
+    // overflow: visible
     position: absolute
     top: 100%
     right: 0
     width: 400px
-    display: none // Enable this after jquery implementation 
+    display: none 
 
   #notificationsBody
     min-height: 300px
 
   #notificationFooter
+    display: inline-block
+    width: 100%
     background-color: $grey
     text-align: center
     font-weight: bold
     padding: 1em
     font-size: 0.5em
     border-top: border(1, $grey)
+    &:hover
+      text-decoration: underline

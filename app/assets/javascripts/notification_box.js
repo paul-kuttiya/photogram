@@ -1,22 +1,36 @@
-document.addEventListener("turbolinks:load", function()
-{
-$("#notificationLink").click(function()
-{
-$("#notificationContainer").fadeToggle(300);
-$("#notification_count").fadeOut("slow");
-return false;
-});
+(function() {
+  document.addEventListener("turbolinks:load", function() {
 
-//Document Click hiding the popup 
-$(document).click(function()
-{
-$("#notificationContainer").hide();
-});
+    var $nav = $('nav');
 
-//Popup on click
-$("#notificationContainer").click(function()
-{
-return false;
-});
+    $nav.find("li").on("click", "a", function(e) {
+      //toggle box only if click on notification link
+      if (this.id === "notificationLink") {
+        e.preventDefault();
+        e.stopImmediatePropagation();
 
-});
+        //fix bootstrap appears with notification box
+        $nav.find('li.dropdown').removeClass("open")
+        
+        $("#notificationContainer").toggle();
+      } else {
+        $("#notificationContainer").hide();
+      }
+
+      //unbind footer to link to activity page
+      $("#notificationFooter").click(function(e) {
+        $(this).unbind();
+      });
+
+      //hide notification when click outside the box
+      $(document).on("click", function(e) {
+        e.stopImmediatePropagation();
+
+        if ((!$(e.target).parents('#notification_li').length)) {
+          $("#notificationContainer").hide();
+        }
+      });  
+    });
+
+  });
+}());

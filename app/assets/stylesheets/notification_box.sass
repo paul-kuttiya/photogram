@@ -1,0 +1,32 @@
+#notification_li
+  position: relative
+
+  span
+    position: absolute
+    top: 15%
+    right: 17%
+    color: $red
+    font-weight: bolder
+
+  #notificationContainer
+    z-index: 9999 !important
+    background-color: $white
+    border: border(1, $grey)
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25)
+    overflow: visible
+    position: absolute
+    top: 100%
+    right: 0
+    width: 400px
+    display: none // Enable this after jquery implementation 
+
+  #notificationsBody
+    min-height: 300px
+
+  #notificationFooter
+    background-color: $grey
+    text-align: center
+    font-weight: bold
+    padding: 1em
+    font-size: 0.5em
+    border-top: border(1, $grey)

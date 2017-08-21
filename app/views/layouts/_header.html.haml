@@ -6,7 +6,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Photogram", root_path, :class => 'navbar-brand'
+      = link_to root_path, class: 'navbar-brand' do
+        %span
+          %img{:alt => "", :height => "50", :src => "/placeholder/logo.png", :width => "100"}/
+
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       -# %ul.nav.navbar-nav
       -# %form.navbar-form.navbar-left
@@ -19,9 +22,21 @@
             = link_to new_user_post_path(current_user) do
               +
               = fa_icon "photo"
-          %li.icon-list
-            = link_to "#" do
+          %li.icon-list#notification_li
+            %span 3
+            = link_to "#", id: "notificationLink" do
               = fa_icon "heart-o"
+            #notificationContainer
+              #notificationsBody.notifications
+                %ul
+                  - 5.times do
+                    %li Jessess started follow paul
+              #notificationFooter
+                %a{:href => "#"} See All
+   
+          -# %li.icon-list
+          -#   = link_to "#" do
+          -#     = fa_icon "heart-o"
               
         - unless logged_in?
           %li= link_to "Login", login_path

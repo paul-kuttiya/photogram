@@ -8,11 +8,14 @@ class RelationshipsController < ApplicationController
     if @relationship
       @relationship.destroy
     else
-      Relationship.create(leader: @user, follower: current_user)
+      @follow_notice = Relationship.create(leader: @user, follower: current_user)
+
+      Notice.create_follow_notice(current_user, @user, @follow_notice)
     end
 
     @unfollow = !!@relationship
     @user_page = params[:user_page] == "true"
+    
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

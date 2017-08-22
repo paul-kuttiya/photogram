@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       @like.destroy
     else
       @like = Vote.create(user: current_user, voteable: @post)
-      #create notice
+      Notice.create_notice(current_user, @post.user, @like) unless is_user_page?
     end
     
     @unlike = @like.destroyed?
@@ -40,6 +40,10 @@ class PostsController < ApplicationController
   end
 
   private
+  def is_user_page?
+    current_user == @user
+  end
+
   def create_post
     params.require(:post).permit!
   end
@@ -55,15 +59,10 @@ class PostsController < ApplicationController
   def create_hashtag
     if @post.has_hashtags?
       @post.hashtags.each do |tag|
-        #Validates extra layer both in controller and model
-        tag = tag.downcase
-        @tag = tag_exists?(tag)
+        @tag = Tag.find_or_create_new(tag.downcase)
+        #Validates both in controller and model
         @tag.posts << @post unless @tag.posts.include?(@post)
       end
     end
-  end
-
-  def tag_exists?(tag)
-    Tag.exists?(name: tag) ? Tag.find_by(name: tag) : Tag.create(name: tag) 
   end
 end

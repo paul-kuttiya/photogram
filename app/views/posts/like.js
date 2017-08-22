@@ -13,6 +13,8 @@ var LikePost = {
   },
   like: function() {
     this.toggleHeart();
+    console.log(this.unlike)
+
     if (this.unlike) {
       this.updateLikes(-1);
     } else {

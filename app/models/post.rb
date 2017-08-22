@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
   has_many :post_tags
   has_many :tags, through: :post_tags
+  has_many :notices
 
   mount_uploader :image, PhotoUploader
   validates_integrity_of :image, message: "cannot be larger than 1MB." #carrierwave

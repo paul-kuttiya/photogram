@@ -1,12 +1,12 @@
 #notification_li
   position: relative
 
-  span
+  span.count
     position: absolute
     top: 15%
-    right: 17%
-    color: $red
-    font-weight: bolder
+    right: 15%
+    color: $primary
+    font-weight: 800
 
   #notificationContainer
     z-index: 9999 !important
@@ -22,6 +22,28 @@
 
   #notificationsBody
     min-height: 300px
+    ul
+      max-height: 300px
+      overflow-y: auto
+      li
+        padding: 1em 0.5em
+        border: border(1, $grey)
+        .notice, time
+          display: inline-block
+        a
+          img
+            width: 36px
+            height: 36px
+        .notice
+          padding-left: 1em
+          width: 75%
+          strong
+            padding-right: 5px
+          span, strong
+            position: initial
+        time
+          width: 100%
+          text-align: left    
 
   #notificationFooter
     display: inline-block

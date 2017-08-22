@@ -20,6 +20,14 @@ class Post < ActiveRecord::Base
   end
 
   def hashtags
-    caption.scan(/#\w+/).uniq.map { |tag| tag[1..-1].downcase }
+    if find_hashtag.length > 0
+      find_hashtag.uniq.map { |tag| tag[1..-1].downcase }
+    end
+  end
+
+  private
+  
+  def find_hashtag
+    caption.scan(/#\w+/)
   end
 end

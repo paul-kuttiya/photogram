@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_signed_in, only: [:new, :create]
-  before_action :require_user, only: [:edit, :update]
+  before_action :require_user, only: [:edit, :update, :activity]
   before_action :find_current_user, only: [:edit, :update]
 
   def new

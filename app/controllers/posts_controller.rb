@@ -12,6 +12,8 @@ class PostsController < ApplicationController
 
     if @post.save
       create_hashtag
+      send_notice_to_followers
+
       redirect_to user_post_path(current_user, @post)
     else
       render :new
@@ -21,14 +23,14 @@ class PostsController < ApplicationController
   def like
     @like = Vote.find_by(user: current_user, voteable: @post)
 
-    if @like
-      @like.destroy
+    #unlike
+    if @like && @like.vote?
+      @like.update(vote: false)
     else
-      @like = Vote.create(user: current_user, voteable: @post)
-      Notice.create_notice(current_user, @post.user, @like) unless is_user_page?
+      create_new_like
     end
-    
-    @unlike = @like.destroyed?
+  
+    @unlike = !@like.vote?
 
     respond_to do |format|
       format.html do
@@ -63,6 +65,21 @@ class PostsController < ApplicationController
         #Validates both in controller and model
         @tag.posts << @post unless @tag.posts.include?(@post)
       end
+    end
+  end
+
+  def create_new_like
+    if @like.nil? #new like
+      @like = Vote.create(user: current_user, voteable: @post)
+      Notice.create_notice(current_user, @post.user, @like, @post) unless is_user_page?
+    else #re-like after unlike
+      @like.update(vote: true)
+    end
+  end
+
+  def send_notice_to_followers
+    current_user.followers.each do |follower|
+      Notice.create_notice(current_user, follower, @post, @post)
     end
   end
 end

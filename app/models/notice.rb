@@ -4,12 +4,13 @@ class Notice < ActiveRecord::Base
   belongs_to :noticeable, polymorphic: true
   belongs_to :post
 
-  validates_uniqueness_of :post_id, scope: [:noticeable], allow_nil: true
+  # validates_uniqueness_of :post_id, scope: [:noticeable], allow_nil: true
   
   # extra validation in model and controller
   # necessary?
   def self.create_notice(from, to, noticeable, post)
-    unless exists?(from: from, to: to, noticeable: noticeable, post: post)
+    #prevent duplication
+    unless exists?(from: from, to: to, noticeable: noticeable)
       create(from: from, to: to, noticeable: noticeable, post: post)
     end
   end

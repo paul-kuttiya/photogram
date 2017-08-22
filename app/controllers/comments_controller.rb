@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
       @mention_at = User.find_by(username: mention)
 
       if @mention_at 
-        Mention.create_user_mention(@mention_at, current_user, get_post)
+        @mention = Mention.create_user_mention(@mention_at, current_user, get_post)
         
         build_mention_notice
       end
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   # no notice when mention yourself
   def build_mention_notice
     unless current_user == @mention_at 
-      Notice.create_notice(current_user, @mention_at, get_post, get_post)
+      Notice.create_notice(current_user, @mention_at, @mention, get_post)
     end
   end
 end

@@ -22,7 +22,7 @@
             = link_to new_user_post_path(current_user) do
               +
               = fa_icon "photo"
-          = render "shared/notification"
+          = render "notification/box"
    
         - unless logged_in?
           %li= link_to "Login", login_path

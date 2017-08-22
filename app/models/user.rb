@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :leaders, class_name: "Relationship", foreign_key: "leader_id"
   has_many :mentioned, class_name: "Mention", foreign_key: "mention_at_id"
   has_many :mentions, class_name: "Mention", foreign_key: "mention_by_id"
-  has_many :notices_by, class_name: "Notice", foreign_key: "to_id"
+  has_many :notices, class_name: "Notice", foreign_key: "to_id"
   has_many :notices_to, class_name: "Notice", foreign_key: "from_id"
   
   has_secure_password validation: false

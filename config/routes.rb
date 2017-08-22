@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/accounts/edit', to: 'users#edit'
   post '/accounts/update', to: 'users#update'
   get "/accounts/activity", to: 'users#activity'
+  put 'accounts/mark_notification', to: 'users#mark_notice'
 
   resources :tags, only: [:show]
 

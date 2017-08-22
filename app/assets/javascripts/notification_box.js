@@ -8,6 +8,15 @@
       if (this.id === "notificationLink") {
         e.preventDefault();
         e.stopImmediatePropagation();
+        
+        // updateCount;
+        $.ajax({
+          url: "/accounts/mark_notification",
+          type: 'put',
+          success: function() {
+            $(this).siblings("span.count").text("0");
+          }.bind(this),
+        });
 
         //fix bootstrap appears with notification box
         $nav.find('li.dropdown').removeClass("open")

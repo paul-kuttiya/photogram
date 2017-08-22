@@ -32,6 +32,14 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def mark_notice
+    current_user.notices.update_all(mark: true)
+    
+    respond_to do |f|
+      f.js
+    end
+  end
   
   private
   def user_params

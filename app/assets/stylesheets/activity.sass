@@ -1,19 +1,40 @@
 //activity
 .activity
-  li
-    padding: 1em 0
-    border-bottom: 1px solid $grey
-    img
-      width: 48px
-      height: 48px
-    .notice
-      img
-        margin-right: .5em
-      strong
-        color: $default
-      span.text-muted
-        margin-left: .5em
-    &:first-of-type
-      padding-top: 0
-    &:last-of-type
-      border: none
+  ul
+    li
+      padding: 1em 0.5em
+      border-bottom: border(1, $grey)
+      &:last-of-type
+        border-bottom: none
+      .notice, time
+        display: inline-block
+      a
+        img
+          width: 48px
+          height: 48px
+      .notice
+        padding: 1em
+        width: 70%
+        strong
+          padding-right: 5px
+        span, strong
+          position: initial
+      time
+        margin-left: 1em
+  // li
+  //   padding: 1em 0
+  //   border-bottom: 1px solid $grey
+  //   img
+  //     width: 48px
+  //     height: 48px
+  //   .notice
+  //     img
+  //       margin-right: .5em
+  //     strong
+  //       color: $default
+  //     span.text-muted
+  //       margin-left: .5em
+  //   &:first-of-type
+  //     padding-top: 0
+  //   &:last-of-type
+  //     border: none

@@ -4,6 +4,8 @@ class Notice < ActiveRecord::Base
   belongs_to :noticeable, polymorphic: true
   belongs_to :post
 
+  default_scope { order(created_at: :desc) }
+
   # validates_uniqueness_of :post_id, scope: [:noticeable], allow_nil: true
   
   # extra validation in model and controller

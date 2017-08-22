@@ -1,0 +1,17 @@
+%ul
+  - user_notices(10).each do |notice|
+    - if notice.noticeable_type
+      %li.clearfix
+        .pull-left
+          = link_to notice.from do 
+            %img.img-circle(src="#{has_image?(notice.from.avatar)}")
+        .notice
+          %strong= notice.from.username
+          = render "notification/type/#{notice.noticeable_type.downcase}"
+          %time.text-muted #{time_ago_in_words(notice.created_at)} ago
+        .pull-right
+          - if notice.post
+            = link_to user_post_path(notice.from, notice.post) do
+              %img.img-object(src="#{notice.post.image}")
+          - else
+            = render "relationships/follow_button", user: notice.from

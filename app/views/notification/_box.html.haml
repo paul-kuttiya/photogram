@@ -1,10 +1,10 @@
 %li.icon-list#notification_li
-  %span.count 3
+  %span.count= unmark_notices.length
   = link_to "#", id: "notificationLink" do
     = fa_icon "heart-o"
   #notificationContainer
     #notificationsBody.notifications
-      = render "shared/notification_messages"
+      = render "notification/messages"
     
     = link_to accounts_activity_path, id: "notificationFooter" do
       %small See All

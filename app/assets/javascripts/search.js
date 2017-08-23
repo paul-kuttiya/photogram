@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
+  var mobile = !!($(window).width() <= 737);
 
-  var $search = $("#search"),
+  var $search = mobile ? $('#search-mobile') : $('#search'),
       $input = $search.find('input'),
       $searchResults = $('#search_results');
 
@@ -35,6 +36,7 @@ document.addEventListener("turbolinks:load", function() {
       });
     },
     bind: function() {
+      
       this.search();
       this.inputReset();
     }

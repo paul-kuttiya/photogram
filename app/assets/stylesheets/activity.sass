@@ -19,22 +19,13 @@
           padding-right: 5px
         span, strong
           position: initial
-      time
-        margin-left: 1em
-  // li
-  //   padding: 1em 0
-  //   border-bottom: 1px solid $grey
-  //   img
-  //     width: 48px
-  //     height: 48px
-  //   .notice
-  //     img
-  //       margin-right: .5em
-  //     strong
-  //       color: $default
-  //     span.text-muted
-  //       margin-left: .5em
-  //   &:first-of-type
-  //     padding-top: 0
-  //   &:last-of-type
-  //     border: none
+        span
+          margin-right: .5em
+
+@media screen and (max-width: 415px)
+  .activity
+    ul li .notice
+      padding-top: 0
+      span, time
+        display: inline-block
+        width: 100%

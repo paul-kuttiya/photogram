@@ -1,4 +1,6 @@
 #search
+  margin: 0
+  padding-top: 0.5em
   z-index: 99999 !important
   width: 25%
   position: absolute
@@ -12,11 +14,58 @@
     // display: none
     background-color: $white
     border: border(1, $grey)
-    z-index: 9999 !important
-    background-color: $white
-    border: border(1, $grey)
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25)
     max-height: 300px
+    overflow-y: auto
+    a
+      display: inline-block
+      width: 100%
+      position: relative
+      padding: 1em 1.5em
+      border-bottom: border(1, $grey)
+      &:hover
+        background: rgba(231, 231, 231, 0.5)
+      &:last-of-type
+        border: none
+      .img-wrapper
+        display: inline-block
+        vertical-align: middle
+        margin-right: 1em
+        img
+          width: 36px
+          height: 36px
+      .names
+        display: inline-block
+        width: 70%
+        span
+          position: absolute
+          top: 1em
+        small
+          position: absolute
+          top: 2.5em           
+
+    p
+      padding: 1em
+
+// mobile
+#search-mobile
+  margin: 0
+  padding: .35em 0 0 0
+  z-index: 99999 !important
+  width: 100%
+  position: absolute
+  border: none
+  .form-group
+    position: relative
+    display: block
+    width: 100%
+    input
+      margin: 0 auto
+      width: 60%
+  #search_results
+    border: border(1, $grey)
+    background-color: $white
+    max-height: 50vh
     overflow-y: auto
     a
       display: inline-block

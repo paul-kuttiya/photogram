@@ -14,18 +14,4 @@
       = render 'layouts/messages'
       #content
         = yield
-    %footer#mobile
-      %ul
-        %li.icon-list
-          = link_to "#" do
-            +
-            = fa_icon "photo"
-        %li.icon-list
-          = link_to "#" do
-            = fa_icon "user-o"
-        %li.icon-list
-          = link_to "#" do
-            = fa_icon "heart"
-        %li.icon-list
-          = link_to "#" do
-            = fa_icon "photo"
+    = render 'layouts/footer'

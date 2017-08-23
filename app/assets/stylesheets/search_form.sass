@@ -1,0 +1,49 @@
+#search
+  z-index: 99999 !important
+  width: 25%
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  .form-group
+    width: 100%
+    input
+      width: 100%
+  #search_results
+    // display: none
+    background-color: $white
+    border: border(1, $grey)
+    z-index: 9999 !important
+    background-color: $white
+    border: border(1, $grey)
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25)
+    max-height: 300px
+    overflow-y: auto
+    a
+      display: inline-block
+      width: 100%
+      position: relative
+      padding: 1em 1.5em
+      border-bottom: border(1, $grey)
+      &:hover
+        background: rgba(231, 231, 231, 0.5)
+      &:last-of-type
+        border: none
+      .img-wrapper
+        display: inline-block
+        vertical-align: middle
+        margin-right: 1em
+        img
+          width: 36px
+          height: 36px
+      .names
+        display: inline-block
+        width: 70%
+        span
+          position: absolute
+          top: 1em
+        small
+          position: absolute
+          top: 2.5em           
+
+    p
+      padding: 1em

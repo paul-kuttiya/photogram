@@ -1,0 +1,11 @@
+#search_results
+  - if @users.length > 0
+    - @users.each do |user|
+      = link_to user do
+        .img-wrapper
+          %img.small-img.img-circle(src="#{has_image?(user.avatar)}")
+        .names
+          %span= user.username
+          %small.text-muted= user.full_name
+  - else
+    %p.text-center Result not found

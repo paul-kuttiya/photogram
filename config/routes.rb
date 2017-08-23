@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   put 'accounts/mark_notification', to: 'users#mark_notice'
 
   resources :tags, only: [:show]
-
+  get '/users/search', to: 'users#search'
 end

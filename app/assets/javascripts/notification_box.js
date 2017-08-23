@@ -20,7 +20,8 @@
 
         //fix bootstrap appears with notification box
         $nav.find('li.dropdown').removeClass("open")
-        
+        $('#search_results').hide();
+
         $("#notificationContainer").toggle();
       } else {
         $("#notificationContainer").hide();

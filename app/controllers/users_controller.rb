@@ -40,6 +40,16 @@ class UsersController < ApplicationController
       f.js
     end
   end
+
+  def search
+    # binding.pry
+    term = params[:term].gsub(/\W/, '')
+    @users = User.where("username like ?", "%#{term}%").limit(10)
+    
+    respond_to do |f|
+      f.js
+    end
+  end
   
   private
   def user_params

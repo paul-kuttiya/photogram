@@ -1,5 +1,5 @@
 %nav.navbar.navbar-default
-  .container-fluid
+  .container-fluid#desktop-view
     .navbar-header
       %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
@@ -34,4 +34,9 @@
       = bootstrap_form_tag url: "#", html: { class: "navbar-form", id: "search" } do |f|
         = f.text_field :term, hide_label: true, placeholder: "search"
         
-          
+  .container-fluid#mobile-view
+    = bootstrap_form_tag url: "#", html: { class: "navbar-form", id: "search-mobile" } do |f|
+      = f.text_field :term, hide_label: true, placeholder: "search"
+      #search_results  
+        -# %ul
+        -#   %li hahaha  

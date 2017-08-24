@@ -22,14 +22,14 @@
 
         - if logged_in?
           %span 
-            = link_to user_followers_path(@user), remote: true, data: { toggle: "modal", target: "#follower-modal" } do
+            = link_to user_followers_path(@user), id: "follower-link", remote: true, data: { toggle: "modal", target: "#follower-modal" } do
               %strong{id: (current_user == @user ? "follower" : "follower_#{@user.id}")}
                 #{@user.followers.length}
               %span
                 followers
             = render 'relationships/modal', title: "follower"
           %span 
-            = link_to user_followings_path(@user), remote: true, data: { toggle: "modal", target: "#following-modal" } do
+            = link_to user_followings_path(@user), id: "following-link", remote: true, data: { toggle: "modal", target: "#following-modal" } do
               %strong{id: (current_user == @user ? "following" : "following_#{@user.id}")}
                 #{@user.leaders.length}
               %span

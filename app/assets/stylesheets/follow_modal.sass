@@ -1,7 +1,7 @@
 //follow-modal
 .follow-modal
   width: 600px
-  margin: 2em auto
+  margin: 3.5em auto
   .modal-content
     position: relative
     .modal-header
@@ -13,8 +13,8 @@
       z-index: 10
       button.close
         position: fixed
-        right: 22%
-        top: .5em
+        right: 25%
+        top: 2em
         color: $white
 
     .modal-body
@@ -27,6 +27,8 @@
           display: block
           height: 3em
           border-bottom: border(1, $grey)
+          &:last-of-type
+            height: 3.5em
           a img
             margin-right: 0.5em
             display: inline-block

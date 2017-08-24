@@ -26,7 +26,7 @@ class RelationshipsController < ApplicationController
     @follows = @user.followers
 
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html
       format.js
     end
   end
@@ -35,7 +35,7 @@ class RelationshipsController < ApplicationController
     @follows = @user.leaders
     
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html
       format.js
     end
   end

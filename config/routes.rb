@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'ui#index'
   get '/ui(/:action)', controller: 'ui'
   
   get '/signup', to: "users#new"
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
-  resources :users, path: "/", only: [:show] do
+  resources :users, path: "/", only: [:show, :index] do
     resources :posts, path: "/p" do
       member do
         post :comment, to: "comments#create"

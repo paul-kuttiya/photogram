@@ -15,10 +15,19 @@
           position: absolute
           top: 50%
           transform: translateY(-50%)
+          
     .post-body
+      a
+        display: block
       img
         width: 100%
-
+    .like    
+      .like-icon
+        border: none    
+      p
+        strong
+          margin-right: .5em
+        
     .comments
       padding-top: 0
 
@@ -31,4 +40,7 @@
     .post-wrapper
       margin-bottom: 0
       border: none
-      
+      border-top: border(1, $grey)
+      &:first-of-type
+      border: none
+        

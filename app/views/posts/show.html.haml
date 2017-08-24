@@ -8,7 +8,7 @@
           %strong= @post.user.username
     .user-photo
       %img{src: "#{@post.image}"}
-    .comments{data: {type: "comments"}}
+    .comments{id: "comments_#{@post.id}", data: {type: "comments"}}
       %ul
         %li#caption
           = link_to @post.user.username, @post.user

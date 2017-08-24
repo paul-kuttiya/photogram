@@ -1,13 +1,8 @@
-var $show_page = $('#content .post-show'),
-		$form = $show_page.find('form#comment-form'),
-		$comments_container = $show_page.find('.comments'),
-		$last_comment = $comments_container.find('li').last();
-		// $first_comment = $comments_container.find('li#caption');
-		console.log('<%= process_link(@comment.description) %>')
-
-var $show_page = $('#content .post-show'),
-		$form = $show_page.find('form#comment-form'),
-		$submit = $form.find('input[type="submit"]');
+var $show_page = $('#content'),
+		$comments_container = $show_page.find('.comments#comments_<%= @comment.post.id %>'),
+		$form = $comments_container.siblings('form#comment-form'),
+		$last_comment = $comments_container.find('li').last(),
+		$submit = $show_page.find('input.btn-comment');
 
 var InsertComment = {
 	$comment: function() {

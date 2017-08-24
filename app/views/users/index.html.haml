@@ -1,0 +1,38 @@
+#posts.clearfix
+  - @following_users.each do |user|
+    .col-md-offset-3.col-md-6.post-no-padding
+      %section.post-wrapper{data: {id: user.id}}
+        %header.profile
+          = link_to user, class: "user-info" do
+            .media.pull-left
+              %img.img-circle{src: "#{has_image?(user.avatar)}"}
+            %span 
+              %strong
+                #{user.username} <br>
+        - post = user.posts.first
+        .post-body
+          = link_to user_post_path(user, post) do
+            %img{src: "#{post.image}"}
+        .like
+          %section.like-icon
+            -# = button_to like_user_post_path(user, post), remote: true do
+            -#   .glyphicon.glyphicon-heart{class: post.liked_by?(current_user) ? "active" : ""}
+            -# = link_to "#", data: {type: "comment_icon", id: user.id} do
+            -#   .glyphicon.glyphicon-comment
+          %p
+            %strong #{post.votes.length} likes
+            %strong #{post.comments.length} comments
+        .comments{id: "comments_#{post.id}", data: {type: "comments"}}
+          - if !!post.comments.length
+            %small.text-muted Recent comments
+            %ul
+              - post.comments.limit(5).each do |comment|
+                %li
+                  = link_to comment.user.username, comment.user 
+                  %span #{comment.description}
+                %span.text-muted 
+                  #{time_ago_in_words(comment.created_at)}
+        -# = form_tag comment_user_post_path(user, post), method: "post", remote: true, id: "comment-form" do
+        -#   .form-group
+        -#     = text_field_tag :description, nil, id: "comment-input", class: "form-control", placeholder: "Add a comment..."
+        -#     = submit_tag "Post", class: "btn btn-comment btn-link"

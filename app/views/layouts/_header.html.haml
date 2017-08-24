@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to root_path, class: 'navbar-brand' do
+      = link_to (logged_in? ? users_path : login_path), class: 'navbar-brand' do
         %span
           %img{height: "30", src: "/placeholder/logo.png", width: "65"}
 

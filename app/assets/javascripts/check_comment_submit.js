@@ -1,7 +1,8 @@
+//post show page comment form
 document.addEventListener("turbolinks:load", function() {
-  var $show_page = $('#content .post-show'),
+  var $show_page = $('#content'),
       $form = $show_page.find('form#comment-form'),
-      $submit = $form.find('input[type="submit"]');
+      $submit = $show_page.find('input.btn-comment');
 
   $submit.attr('disabled', 'disabled');
 

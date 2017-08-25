@@ -1,12 +1,12 @@
 CarrierWave.configure do |config|
-  
-end
-
-CarrierWave.configure do |config|
   if Rails.env.staging? || Rails.env.production?
     config.storage    = :aws
     config.aws_bucket = ENV.fetch('S3_BUCKET_NAME')
     config.aws_acl    = 'public-read'
+
+    # Optionally define an asset host for configurations that are fronted by a
+    # content host, such as CloudFront.
+    # config.asset_host = 'http://example.com'
 
     # The maximum period for authenticated_urls is only 7 days.
     config.aws_authenticated_url_expiration = 60 * 60 * 24 * 7
@@ -23,12 +23,8 @@ CarrierWave.configure do |config|
       region:            ENV.fetch('AWS_REGION') # Required
     }
 
-  end
-
-  if Rails.env.test? or Rails.env.cucumber?
-    CarrierWave.configure do |config|
-      config.storage = :file
-      config.enable_processing = false
-    end
+  else
+    config.storage = :file
+    config.enable_processing = Rails.env.development?
   end
 end

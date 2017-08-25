@@ -17,5 +17,5 @@
 /tmp
 
 #images
-/avatars/
-/post_images/
+/public/avatars/
+/public/post_images/

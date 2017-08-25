@@ -13,11 +13,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   ## store dir
   def store_dir
-    if Rails.env.production?
-      return "user_#{model.user_id}/avatar/#{model.id}"
-    else
+    # if Rails.env.production?
+    #   return "user_#{model.user_id}/avatar/#{model.id}"
+    # else
       return "avatars"
-    end
+    # end
   end
 
   ##delete tmp

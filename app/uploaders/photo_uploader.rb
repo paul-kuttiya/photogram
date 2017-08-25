@@ -11,11 +11,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   ## store dir
   def store_dir
-    if Rails.env.production?
-      return "user_#{model.user_id}/posts/#{model.id}"
-    else
+    # if Rails.env.production?
+    #   return "user_#{model.user_id}/posts/#{model.class.id}"
+    # else
       return "post_images"
-    end
+    # end
   end
 
   def cache!(new_file)

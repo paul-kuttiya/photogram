@@ -1,7 +1,7 @@
 Fabricate(:user, username: "admin", password: "admin")
 
 20.times do 
-  if Rails.env.production?
+  if Rails.env.development?
     Fabricate(:user,
       avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
     )

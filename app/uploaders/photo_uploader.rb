@@ -12,9 +12,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   ## store dir
   def store_dir
     if Rails.env.production?
-      return "images/user_#{model.user_id}/posts/#{model.id}"
+      return "user_#{model.user_id}/posts/#{model.id}"
     else
-      return "post_images/"
+      return "post_images"
     end
   end
 

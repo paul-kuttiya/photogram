@@ -9,10 +9,37 @@
     p
       font-weight: 500
       display: inline
+  
+  .slideshow
+    position: relative
+    z-index: 10
+    float: right
+    width: 80%
+    height: 100%
+    img.frame
+      width: 100%
+    .slide-photo
+      box-sizing: border-box
+      z-index: -10
+      position: absolute
+      top: 0
+      width: 100%
+      background-clip: content-box
+      padding: 1em .5em
+      height: 100%
+      background-image: url(/placeholder/slide_1.jpeg)
+      background-repeat: none
+      background-position: center center
+      background-size: cover
+
+@media screen and (max-width: 770px)
+  .user-form-wrapper
+    .slideshow
+      display: none
 
 @media screen and (max-width: 415px)
   .user-form-wrapper
-    .well  
+    .well
       box-shadow: none
       -webkit-box-shadow: none
       background-color: $bg

@@ -2,7 +2,7 @@ document.addEventListener("turbolinks:load", function() {
   $main = $('#content');
 
   var CommentForm = {
-    $commentIcon: $main.find(`[data-type="comment_icon"]`),
+    $commentIcon: $main.find('[data-type="comment_icon"]'),
     $postsCommentInput: $('#posts').find('form input#comment-input'),
     jumpToCommentForm: function() {
       var self = this;

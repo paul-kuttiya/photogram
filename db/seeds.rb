@@ -9,7 +9,6 @@ Fabricate(:user, username: "admin", password: "admin")
     Fabricate(:user,
       remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"
     )
-    end
   end
 end
 

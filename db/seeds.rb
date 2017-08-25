@@ -1,9 +1,11 @@
 Fabricate(:user, username: "admin", password: "admin")
 
 20.times do
+  gender = ["men", "women"].sample
+  n = (1..99).to_a.sample
   if Rails.env.production?
     Fabricate(:user,
-      remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"
+      remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_#{gender}_#{n}.jpg"
     )
   else
     Fabricate(:user,

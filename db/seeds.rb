@@ -22,9 +22,10 @@ end
   hashtags = tags.map{ |tag| "##{tag.name}" }
   
   if Rails.env.production?
+    n = (1..100).to_a.sample
     post = Fabricate(:post, 
       caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1),
-      remote_image_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"  
+      remote_image_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/post_images/pic_#{n}.jpeg"  
     )
   else
     post = Fabricate(:post, caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1))

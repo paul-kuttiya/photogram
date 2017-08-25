@@ -1,13 +1,13 @@
 Fabricate(:user, username: "admin", password: "admin")
 
-20.times do 
-  if Rails.env.development?
+20.times do
+  if Rails.env.production?
     Fabricate(:user,
-      avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
+      remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"
     )
   else
     Fabricate(:user,
-      remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"
+      avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
     )
   end
 end
@@ -53,3 +53,5 @@ end
   next if follower == leader || Relationship.find_by(follower: follower, leader: leader)
   Relationship.create(follower: follower, leader: leader)
 end
+
+FileUtils.remove_dir "#{Rails.root}/public/uploads/tmp", true

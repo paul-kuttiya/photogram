@@ -1,5 +1,6 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  
   after :store, :delete_old_tmp_file
 
   # version :resized do

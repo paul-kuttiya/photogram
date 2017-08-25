@@ -1,7 +1,7 @@
 Fabricate(:user, username: "admin", password: "admin")
 
 20.times do 
-  if Rails.env.development?
+  if Rails.env.production?
     Fabricate(:user,
       avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
     )
@@ -20,7 +20,7 @@ end
   tags = Tag.all.sample(3)
   hashtags = tags.map{ |tag| "##{tag.name}" }
   
-  if Rails.env.development?
+  if Rails.env.production?
     post = Fabricate(:post, 
       caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1),
       remote_image_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"  

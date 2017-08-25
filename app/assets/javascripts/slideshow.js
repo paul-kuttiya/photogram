@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", function() {
       $slide.animate({
         opacity: 0,
       }, slide_time, function() {
-        $slide.css('background-image', `url(/placeholder/slide_${i}.jpeg)`).animate({
+        $slide.css('background-image', 'url(/placeholder/slide_' + i + '.jpeg)').animate({
           opacity: 1
         }, slide_time, function() {
           i++;

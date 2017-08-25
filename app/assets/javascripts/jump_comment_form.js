@@ -12,7 +12,7 @@ document.addEventListener("turbolinks:load", function() {
         self.hideInput();
 
         var id = $(this).data('id'),
-            input = $(this).parents(`section[data-id=${id}]`).find('input#comment-input');
+            input = $(this).parents('section[data-id=' + id + ']').find('input#comment-input');
 
         input.show().focus();
       });

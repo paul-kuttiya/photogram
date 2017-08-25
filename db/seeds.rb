@@ -1,25 +1,43 @@
 Fabricate(:user, username: "admin", password: "admin")
 
 20.times do 
-  Fabricate(:user,
-    avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
-  )
+  if Rails.env.development?
+    Fabricate(:user,
+      avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
+    )
+  else
+    Fabricate(:user,
+      remote_avatar_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"
+    )
+    end
+  end
 end
 
 50.times { Fabricate(:tag) }
 
+#tag and post
 200.times do
   tags = Tag.all.sample(3)
   hashtags = tags.map{ |tag| "##{tag.name}" }
   
-  post = Fabricate(:post, caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1))
+  if Rails.env.development?
+    post = Fabricate(:post, 
+      caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1),
+      remote_image_url: "https://pkuttiya-photogram.s3.us-east-2.amazonaws.com/avatars/avatar_men_1.jpg"  
+    )
+  else
+    post = Fabricate(:post, caption: hashtags.join(' ') + ' ' + Faker::Lorem.paragraph(1))
+  end
+
   post.tags = tags
 end
 
+#comment
 400.times do
   Fabricate(:comment, post: Post.all.sample, user: User.all.sample)
 end
 
+#like
 3000.times do
   user = User.all.sample
   post = Post.all.sample
@@ -28,6 +46,7 @@ end
   Vote.create(user: user, voteable: post, vote: true)
 end
 
+#relationship
 200.times do 
   follower = User.all.sample
   leader = User.all.sample

@@ -60,9 +60,9 @@ describe SessionsController do
       expect(session[:user_id]).to be_nil
     end
 
-    it "redirect to root path" do
+    it "redirect to login path" do
       get :destroy
-      expect(response).to redirect_to root_path      
+      expect(response).to redirect_to login_path      
     end
   end
 end

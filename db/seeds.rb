@@ -1,6 +1,6 @@
 Fabricate(:user, username: "admin", password: "admin")
 
-15.times do 
+20.times do 
   Fabricate(:user,
     avatar: File.open(Rails.root + Dir["public/avatars/*"].sample)
   )

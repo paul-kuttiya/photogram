@@ -7,8 +7,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   ## Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :aws
+  # storage :file || :aws => setup in initiaizer
 
   ## store dir
   def store_dir
